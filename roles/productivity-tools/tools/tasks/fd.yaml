@@ -1,0 +1,14 @@
+---
+- name: Check fd present
+  stat:
+    path: /usr/local/bin/fd
+  register: fd_bin
+
+- name: Install fd
+  become: yes
+  shell: |
+    curl -LO https://github.com/sharkdp/fd/releases/download/{{ fd.version }}/fd-{{ fd.version }}-x86_64-unknown-linux-musl.tar.gz
+    tar -xzf fd-{{ fd.version }}-x86_64-unknown-linux-musl.tar.gz -C /usr/local/bin --strip-components=1 fd-{{ fd.version }}-x86_64-unknown-linux-musl/fd
+    rm -f fd-{{ fd.version }}-x86_64-unknown-linux-musl.tar.gz
+    chmod +x /usr/local/bin/fd
+  when: not fd_bin.stat.exists

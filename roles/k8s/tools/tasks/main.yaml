@@ -1,0 +1,5 @@
+- include_tasks: kubectl.yaml
+- include_tasks: k9s.yaml
+- include_tasks: carvel.yaml
+- include_tasks: sops.yaml
+- include_tasks: helm.yaml

@@ -1,0 +1,10 @@
+network_packages:
+  - bmon
+  - dnsutils
+  - iproute2
+  - iputils-ping
+  - net-tools
+  - netcat-openbsd
+  - nmap
+  - openssl
+  - traceroute

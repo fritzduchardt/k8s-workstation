@@ -1,0 +1,8 @@
+- name: Install essential packages
+  hosts: workstations
+  roles:
+    - role: ubuntu/zsh
+    - role: ubuntu/essential-packages
+    - role: ubuntu/network-packages
+    - role: ubuntu/docker
+

@@ -1,0 +1,22 @@
+---
+- name: Check OMZ present
+  become: true
+  become_user: "{{ user.name }}"
+  stat:
+    path: ~/.oh-my-zsh
+  register: omz_bin
+
+- name: Install oh my zsh
+  become: true
+  become_user: "{{ user.name }}"
+  shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended --keep-zshrc"
+  when: not omz_bin.stat.exists
+
+- name: Install OMZ theme && plugins
+  become: true
+  become_user: "{{ user.name }}"
+  shell: |
+    ZSH_THEME="afowler"
+    plugins=(zsh-history-substring-search zsh-autosuggestions colorize sudo git aws docker helm)
+  when: not omz_bin.stat.exists

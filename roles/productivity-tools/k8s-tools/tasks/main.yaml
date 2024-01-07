@@ -1,0 +1,14 @@
+---
+- name: Git checkout
+  become: true
+  become_user: "{{ user.name }}"
+  git:
+    repo: 'https://github.com/fritzduchardt/k8s-tools.git'
+    dest: ~/projects/github/k8s-tools
+    version: master
+    update: yes
+
+- name: Install aliases
+  shell: ~/projects/github/linux-tools/zsh/add_source.sh ~/projects/github/k8s-tools/config_rc.sh k8s-tools
+  become: true
+  become_user: "{{ user.name }}"

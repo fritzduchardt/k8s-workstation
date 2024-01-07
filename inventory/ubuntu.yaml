@@ -1,0 +1,5 @@
+workstations:
+  hosts:
+    ubuntu-vm:
+      ansible_host: 192.168.122.219
+      ansible_user: root

@@ -1,0 +1,14 @@
+- name: Check sops present
+  stat:
+    path: /usr/local/bin/sops
+  register: sops_bin
+
+- name: Install sops
+  become: yes
+  shell: |
+    curl -LO https://github.com/getsops/sops/releases/download/{{ sops.version }}/sops-{{ sops.version }}.linux.amd64
+    mv sops-{{ sops.version }}.linux.amd64 /usr/local/bin/sops
+    rm sops-{{ sops.version }}.linux.amd64 
+    chmod +x /usr/local/bin/sops
+  when: not sops_bin.stat.exists
+

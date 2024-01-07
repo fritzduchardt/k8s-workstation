@@ -1,0 +1,12 @@
+---
+- name: Install miscellaneous aliases
+  become: true
+  become_user: "{{ user.name }}"
+  shell: |
+    source ~/.zshrc
+    add_alias.sh zshconfig "vim ~/.zshrc"
+    add_alias.sh lat "ls -lat | head -n10"
+    add_alias.sh c=" clip -r -sel clip"
+    add_alias.sh rm "rm -rf"
+
+    

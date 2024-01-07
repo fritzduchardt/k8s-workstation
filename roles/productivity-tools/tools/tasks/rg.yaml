@@ -1,0 +1,14 @@
+---
+- name: Check rg present
+  stat:
+    path: /usr/local/bin/rg
+  register: rg_bin
+
+- name: Install ripgrep
+  become: yes
+  shell: |
+    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/{{ rg.version }}/ripgrep-{{ rg.version }}-x86_64-unknown-linux-musl.tar.gz
+    tar -xzf ripgrep-{{ rg.version }}-x86_64-unknown-linux-musl.tar.gz -C /usr/local/bin --strip-components=1 ripgrep-{{ rg.version }}-x86_64-unknown-linux-musl/rg
+    rm -f ripgrep-{{ rg.version }}-x86_64-unknown-linux-musl.tar.gz
+    chmod +x /usr/local/bin/rg
+  when: not rg_bin.stat.exists

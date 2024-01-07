@@ -1,0 +1,11 @@
+- name: Check helm present
+  stat:
+    path: /usr/local/bin/vendir
+  register: vendir_bin
+
+- name: Install Carvel tools
+  become: yes
+  shell: |
+    wget -O- https://carvel.dev/install.sh > /tmp/install.sh
+    sudo bash /tmp/install.sh
+  when: not vendir_bin.stat.exists

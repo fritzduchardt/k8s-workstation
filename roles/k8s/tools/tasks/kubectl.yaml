@@ -1,0 +1,13 @@
+---
+- name: Check kubectl present
+  stat:
+    path: /usr/local/bin/kubectl
+  register: kubectl
+
+- name: Install kubectl
+  become: yes
+  shell: |
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    mv kubectl /usr/local/bin
+    chmod +x /usr/local/bin/kubectl
+  when: not kubectl.stat.exists

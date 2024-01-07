@@ -1,0 +1,19 @@
+---
+- name: Git checkout
+  become: true
+  become_user: "{{ user.name }}"
+  git:
+    repo: 'https://github.com/fritzduchardt/linux-tools.git'
+    dest: ~/projects/github/linux-tools
+    version: master
+    update: yes
+
+- name: Install aliases
+  shell: ~/projects/github/linux-tools/zsh/add_source.sh ~/projects/github/linux-tools/aliases.sh linux-tools
+  become: true
+  become_user: "{{ user.name }}"
+
+- name: Install path
+  shell: ~/projects/github/linux-tools/zsh/add_path.sh ~/projects/github/linux-tools/zsh linux-tools
+  become: true
+  become_user: "{{ user.name }}"

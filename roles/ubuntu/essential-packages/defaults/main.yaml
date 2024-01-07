@@ -1,0 +1,15 @@
+  essential_packages:
+    - autojump
+    - build-essential
+    - ca-certificates
+    - curl
+    - wget
+    - git
+    - gnupg
+    - htop
+    - httpie
+    - jq
+    - software-properties-common
+    - tree
+    - vim
+    - wget

@@ -1,0 +1,27 @@
+---
+- name: Create User Group
+  become: yes
+  group:
+    name: "{{ user.group | default(user.name) }}"
+    system: "{{ user.system | default(omit) }}"
+
+- name: Create User
+  become: yes
+  user:
+    comment: "{{ user.comment | default(omit) }}"
+    create_home: "{{ user.create_home | default(omit) }}"
+    group: "{{ user.group | default(user.name) }}"
+    password: "{{ user.password | default(user.name) | password_hash('sha512') }}"
+    home: "{{ user.home | default(omit) }}"
+    shell: "{{ user.shell | default(omit) }}"
+    name: "{{ user.name }}"
+    system: "{{ user.system | default(omit) }}"
+
+- name: Make user a sudoer
+  become: yes
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%{{ user.name }}'
+    line: '%{{ user.name }} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'

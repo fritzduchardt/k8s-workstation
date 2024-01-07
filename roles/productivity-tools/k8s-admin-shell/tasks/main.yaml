@@ -1,0 +1,9 @@
+---
+- name: Git checkout
+  become: true
+  become_user: "{{ user.name }}"
+  git:
+    repo: 'https://github.com/fritzduchardt/k8s-admin-shell.git'
+    dest: ~/projects/github/k8s-admin-shell
+    version: master
+    update: yes
