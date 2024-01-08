@@ -4,3 +4,5 @@ fd:
   version: v9.0.0
 lazygit:
   version: 0.40.2
+yq:
+  version: 4.40.5

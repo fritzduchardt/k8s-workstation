@@ -1,16 +1,17 @@
 ---
 - name: Check lazygit present
   stat:
-    path: /usr/local/bin/lazygit
+    path: /usr/local/bin/lazygit-{{ lazygit.version }}
   register: lazygit_bin
 
 - name: Install lazygit
   become: yes
   shell: |
-    curl -LO https://github.com/jesseduffield/lazygit/releases/download/v0.40.2/lazygit_0.40.2_Linux_x86_64.tar.gz
-    tar -xzf lazygit_0.40.2_Linux_x86_64.tar.gz -C /usr/local/bin lazygit
-    rm -f lazygit_0.40.2_Linux_x86_64.tar.gz
-    chmod +x /usr/local/bin/lazygit
+    curl -LO https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit.version }}/lazygit_{{ lazygit.version }}_Linux_x86_64.tar.gz
+    tar -xzf lazygit_{{ lazygit.version }}_Linux_x86_64.tar.gz lazygit
+    install -m 555 lazygit /usr/local/bin/lazygit-{{ lazygit.version }}
+    ln -sf /usr/local/bin/lazygit-{{ lazygit.version }} /usr/local/bin/lazygit
+    rm lazygit
   when: not lazygit_bin.stat.exists
 
 - name: Create alias for lazygit

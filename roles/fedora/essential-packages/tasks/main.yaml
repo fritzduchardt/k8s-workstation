@@ -1,0 +1,13 @@
+---
+- name: Remove nano default editor
+  ansible.builtin.yum:
+    name: nano-default-editor
+    state: absent
+
+- name: Install essential packages
+  become: yes
+  dnf:
+    name: '{{ item }}'
+    state: latest
+  with_items: '{{ essential_packages }}'
+

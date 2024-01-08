@@ -1,0 +1,14 @@
+---
+- name: Check vendir present
+  stat:
+    path: /usr/local/bin/vendir-{{ vendir.version }}
+  register: vendir_bin
+
+- name: Install vendir
+  become: yes
+  shell: |
+    curl -LO https://github.com/carvel-dev/vendir/releases/download/{{ vendir.version }}/vendir-linux-amd64
+    install -m 555 vendir-linux-amd64 /usr/local/bin/vendir-{{ vendir.version }}
+    ln -s /usr/local/bin/vendir-{{ vendir.version }} /usr/local/bin/vendir
+    rm vendir-linux-amd64
+  when: not vendir_bin.stat.exists

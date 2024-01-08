@@ -3,7 +3,8 @@
   vars:
     ansible_shell_executable: /usr/bin/zsh
   roles:
-    - role: productivity-tools/oh-my-zsh
+    - role: productivity-tools/linux-tools
+    - role: productivity-tools/k8s-tools
     - role: productivity-tools/k8s-admin-shell
     - role: productivity-tools/tools
     - role: productivity-tools/aliases

@@ -1,5 +1,0 @@
-workstations:
-  hosts:
-    test-vm:
-      ansible_host: 192.168.122.86
-      ansible_user: root

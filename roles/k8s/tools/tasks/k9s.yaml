@@ -1,12 +1,15 @@
 ---
-- name: Check helm present
+- name: Check k9s present
   stat:
-    path: /usr/local/bin/k9s
+    path: /usr/local/bin/k9s-{{ k9s.version }}
   register: k9s_bin
 
 - name: Install k9s
   become: yes
   shell: |
     curl -fsSL https://github.com/derailed/k9s/releases/download/{{ k9s.version }}/k9s_Linux_amd64.tar.gz | \
-    tar -xzf - -C /usr/local/bin k9s
+    tar -xzf - k9s
+    install -m 555 k9s /usr/local/bin/k9s-{{ k9s.version }}
+    ln -sf /usr/local/bin/k9s-{{ k9s.version }} /usr/local/bin/k9s
+    rm k9s
   when: not k9s_bin.stat.exists

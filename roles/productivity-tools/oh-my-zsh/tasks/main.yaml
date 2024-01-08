@@ -17,6 +17,8 @@
   become: true
   become_user: "{{ user.name }}"
   shell: |
-    ZSH_THEME="afowler"
-    plugins=(zsh-history-substring-search zsh-autosuggestions colorize sudo git aws docker helm)
+    echo 'export ZSH="/home/fritz/.oh-my-zsh"' >> ~/.zshrc
+    echo 'ZSH_THEME="afowler"' >> ~/.zshrc
+    echo 'plugins=(colorize urltools sudo git docker kubectl web-search helm)' >> ~/.zshrc
+    echo 'source $ZSH/oh-my-zsh.sh' >> ~/.zshrc
   when: not omz_bin.stat.exists

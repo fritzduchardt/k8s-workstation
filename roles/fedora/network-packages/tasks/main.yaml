@@ -1,9 +1,8 @@
 ---
 - name: Install network packages
   become: yes
-  apt:
+  dnf:
     name: '{{ item }}'
     state: latest
-    update_cache: yes
   with_items: '{{ network_packages }}'
 

@@ -1,0 +1,37 @@
+---
+- name: Check docker present
+  stat:
+    path: /etc/apt/keyrings/docker.gpg
+  register: docker
+
+- name: Install essential packages
+  become: yes
+  dnf:
+    name: 'dnf-plugins-core'
+    state: latest
+  when: not docker.stat.exists
+
+- name: Prepare Docker
+  become: yes
+  shell: |
+    sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  when: not docker.stat.exists
+
+- name: Install Docker
+  become: yes
+  dnf:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin
+  when: not docker.stat.exists
+
+- name: Configure Docker
+  become: yes
+  shell: "sudo usermod -aG docker {{ user.name }}"
+  when: not docker.stat.exists
+

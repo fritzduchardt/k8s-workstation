@@ -1,12 +1,15 @@
 ---
 - name: Check helm present
   stat:
-    path: /usr/local/bin/helm
+    path: /usr/local/bin/helm-{{ helm.version }}
   register: helm_bin
 
 - name: Install helm
   become: yes
   shell: |
     curl -fsSL https://get.helm.sh/helm-{{ helm.version }}-linux-amd64.tar.gz | \
-    tar -xzf - -C /usr/local/bin --strip-components=1 linux-amd64/helm
+    tar -xzf - --strip-components=1 linux-amd64/helm
+    install -m 555 helm /usr/local/bin/helm-{{ helm.version }}
+    ln -sf /usr/local/bin/helm-{{ helm.version }} /usr/local/bin/helm
+    rm helm
   when: not helm_bin.stat.exists

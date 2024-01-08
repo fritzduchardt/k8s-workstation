@@ -1,0 +1,14 @@
+---
+- name: Check kapp present
+  stat:
+    path: /usr/local/bin/kapp-{{ kapp.version }}
+  register: kapp_bin
+
+- name: Install kapp
+  become: yes
+  shell: |
+    curl -LO https://github.com/carvel-dev/kapp/releases/download/v{{ kapp.version }}/kapp-linux-amd64
+    install -m 555 kapp-linux-amd64 /usr/local/bin/kapp-{{ kapp.version }}
+    ln -sf /usr/local/bin/kapp-{{ kapp.version }} /usr/local/bin/kapp
+    rm kapp-linux-amd64
+  when: not kapp_bin.stat.exists
