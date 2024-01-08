@@ -1,9 +1,10 @@
-- include_tasks: kubectl.yaml
+- include_tasks: argocd.yaml
+- include_tasks: helm.yaml
 - include_tasks: k9s.yaml
 - include_tasks: kapp.yaml
-- include_tasks: ytt.yaml
-- include_tasks: vendir.yaml
-- include_tasks: sops.yaml
-- include_tasks: helm.yaml
-- include_tasks: argocd.yaml
 - include_tasks: kubeconform.yaml
+- include_tasks: kubectl.yaml
+- include_tasks: myks.yaml
+- include_tasks: sops.yaml
+- include_tasks: vendir.yaml
+- include_tasks: ytt.yaml

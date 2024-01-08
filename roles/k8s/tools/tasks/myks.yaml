@@ -1,0 +1,15 @@
+---
+- name: Check myks present
+  stat:
+    path: /usr/local/bin/myks-{{ myks.version }}
+  register: myks_bin
+
+- name: Install myks
+  become: yes
+  shell: |
+    curl -sSL https://github.com/mykso/myks/releases/download/v3.2.0/myks_3.2.0_linux_amd64.tar.gz | \
+    tar -xzf - myks
+    install -m 555 myks /usr/local/bin/myks-{{ myks.version }}
+    ln -sf /usr/local/bin/myks-{{ myks.version }} /usr/local/bin/myks
+    rm myks
+  when: not myks_bin.stat.exists
