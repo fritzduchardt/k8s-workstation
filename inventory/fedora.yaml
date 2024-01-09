@@ -2,4 +2,4 @@ workstations:
   hosts:
     fedora-vm:
       ansible_host: 192.168.122.93
-      ansible_user: root
+      ansible_user: fritz
