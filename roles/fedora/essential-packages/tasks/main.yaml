@@ -5,7 +5,7 @@
     state: absent
 
 - name: Install essential packages
-  become: yes
+  become: true
   dnf:
     name: '{{ item }}'
     state: latest

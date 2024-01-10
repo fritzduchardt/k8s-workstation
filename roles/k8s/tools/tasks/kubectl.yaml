@@ -5,7 +5,7 @@
   register: kubectl_bin
 
 - name: Install kubectl
-  become: yes
+  become: true
   shell: |
     curl -LO "https://dl.k8s.io/release/{{ kubectl.version }}/bin/linux/amd64/kubectl"
     install -m 555 kubectl /usr/local/bin/kubectl-{{ kubectl.version }}

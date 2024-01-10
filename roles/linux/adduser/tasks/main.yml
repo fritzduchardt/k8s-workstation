@@ -1,27 +1,35 @@
 ---
+- name: Check user present
+  stat:
+    path: /home/{{ user.name }}
+  register: user_dir
+
 - name: Create User Group
-  become: yes
+  become: true
   group:
     name: "{{ user.group | default(user.name) }}"
     system: "{{ user.system | default(omit) }}"
+  when: not user_dir.stat.exists
 
 - name: Create User
-  become: yes
+  become: true
   user:
     comment: "{{ user.comment | default(omit) }}"
     create_home: "{{ user.create_home | default(omit) }}"
     group: "{{ user.group | default(user.name) }}"
-    password: "{{ user.password | default(user.name) | password_hash('sha512') }}"
+    password: "{{ user_password | default(user.name) | password_hash('sha512') }}"
     home: "{{ user.home | default(omit) }}"
     shell: "{{ user.shell | default(omit) }}"
     name: "{{ user.name }}"
     system: "{{ user.system | default(omit) }}"
+  when: not user_dir.stat.exists
 
 - name: Make user a sudoer
-  become: yes
+  become: true
   lineinfile:
     dest: /etc/sudoers
     state: present
     regexp: '^%{{ user.name }}'
     line: '%{{ user.name }} ALL=(ALL) NOPASSWD: ALL'
     validate: 'visudo -cf %s'
+  when: not user_dir.stat.exists

@@ -5,7 +5,7 @@
   register: myks_bin
 
 - name: Install myks
-  become: yes
+  become: true
   shell: |
     curl -sSL https://github.com/mykso/myks/releases/download/v3.2.0/myks_3.2.0_linux_amd64.tar.gz | \
     tar -xzf - myks

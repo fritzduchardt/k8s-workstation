@@ -5,7 +5,7 @@
   register: k9s_bin
 
 - name: Install k9s
-  become: yes
+  become: true
   shell: |
     curl -fsSL https://github.com/derailed/k9s/releases/download/{{ k9s.version }}/k9s_Linux_amd64.tar.gz | \
     tar -xzf - k9s

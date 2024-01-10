@@ -5,7 +5,7 @@
   register: docker
 
 - name: Prepare Docker
-  become: yes
+  become: true
   shell: |
     sudo install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -19,7 +19,7 @@
   when: not docker.stat.exists
 
 - name: Install Docker
-  become: yes
+  become: true
   apt:
     name: '{{ item }}'
     state: latest
@@ -33,7 +33,7 @@
   when: not docker.stat.exists
 
 - name: Configure Docker
-  become: yes
+  become: true
   shell: "sudo usermod -aG docker {{ user.name }}"
   when: not docker.stat.exists
 

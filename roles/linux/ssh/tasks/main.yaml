@@ -1,5 +1,10 @@
+- name: Check ssh dir present
+  stat:
+    path: /home/{{ user.name }}/.ssh
+  register: ssh_dir
+
 - name: Copy ssh public key
-  become: yes
+  become: true
   become_user: "{{ user.name }}"
   shell: |
     mkdir ~/.ssh
@@ -9,11 +14,13 @@
     if ! grep -q "ssh-rsa {{ user.ssh_pub_key }}" ~/.ssh/authorized_keys; then
       echo "ssh-rsa {{ user.ssh_pub_key }}" >> ~/.ssh/authorized_keys
     fi
+  when: not ssh_dir.stat.exists
 
 - name: Enable ssh public key authentication
-  become: yes
+  become: true
   lineinfile:
     path: /etc/ssh/sshd_config
     regexp: '#PubkeyAuthentication yes'
     line: 'PubkeyAuthentication yes'
+  when: not ssh_dir.stat.exists
 

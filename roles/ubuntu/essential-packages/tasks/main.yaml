@@ -1,6 +1,6 @@
 ---
 - name: Install essential packages
-  become: yes
+  become: true
   apt:
     name: '{{ item }}'
     state: latest
@@ -8,6 +8,6 @@
   with_items: '{{ essential_packages }}'
 
 - name: Set VIM as default editor
-  become: yes
+  become: true
   shell: |
     update-alternatives --set editor /usr/bin/vim.basic

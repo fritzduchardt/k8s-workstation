@@ -5,7 +5,7 @@
   register: kapp_bin
 
 - name: Install kapp
-  become: yes
+  become: true
   shell: |
     curl -LO https://github.com/carvel-dev/kapp/releases/download/v{{ kapp.version }}/kapp-linux-amd64
     install -m 555 kapp-linux-amd64 /usr/local/bin/kapp-{{ kapp.version }}

@@ -5,7 +5,7 @@
   register: trivy_bin
 
 - name: Install trivy
-  become: yes
+  become: true
   shell: |
     curl -LO 
     https://github.com/carvel-dev/trivy/releases/download/{{ trivy.version }}/trivy-linux-amd64 \ |

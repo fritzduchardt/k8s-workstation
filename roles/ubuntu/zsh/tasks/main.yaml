@@ -1,19 +1,19 @@
 ---
 - name: Install zsh
-  become: yes
+  become: true
   apt:
     package: 'zsh'
     state: latest
     update_cache: yes
 
 - name: Set zsh as default shell
-  become: yes
+  become: true
   shell: |
     chsh -s /usr/bin/zsh "{{ user.name }}"
 
 
 - name: Create default .zshrc
-  become: yes
+  become: true
   become_user: "{{ user.name }}"
   template:
     src: ../../../../templates/zshrc.j2

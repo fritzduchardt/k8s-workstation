@@ -5,7 +5,7 @@
   register: lazygit_bin
 
 - name: Install lazygit
-  become: yes
+  become: true
   shell: |
     curl -L https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit.version }}/lazygit_{{ lazygit.version }}_Linux_x86_64.tar.gz | \
     tar -xzf lazygit
@@ -15,7 +15,7 @@
   when: not lazygit_bin.stat.exists
 
 - name: Create alias for lazygit
-  become: yes
+  become: true
   become_user: "{{ user.name }}"
   shell: |
     source ~/.zshrc

@@ -5,7 +5,7 @@
   register: fd_bin
 
 - name: Install fd
-  become: yes
+  become: true
   shell: |
     curl -L https://github.com/sharkdp/fd/releases/download/{{ fd.version }}/fd-{{ fd.version }}-x86_64-unknown-linux-musl.tar.gz | \ 
     tar -xzf --strip-components=1 fd-{{ fd.version }}-x86_64-unknown-linux-musl/fd

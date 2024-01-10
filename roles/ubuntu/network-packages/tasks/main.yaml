@@ -1,6 +1,6 @@
 ---
 - name: Install network packages
-  become: yes
+  become: true
   apt:
     name: '{{ item }}'
     state: latest

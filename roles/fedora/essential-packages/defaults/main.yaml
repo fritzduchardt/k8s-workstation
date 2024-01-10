@@ -1,13 +1,12 @@
-  essential_packages:
-    - ca-certificates
-    - curl
-    - wget
-    - git
-    - gnupg
-    - htop
-    - httpie
-    - jq
-    - tree
-    - vim
-    - vim-default-editor
-    - wget
+essential_packages:
+  - ca-certificates
+  - curl
+  - git
+  - gnupg
+  - htop
+  - httpie
+  - jq
+  - tree
+  - vim
+  - vim-default-editor
+  - wget

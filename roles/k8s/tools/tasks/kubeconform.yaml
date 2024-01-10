@@ -5,7 +5,7 @@
   register: kubeconform_bin
 
 - name: Install kubeconform
-  become: yes
+  become: true
   shell: |
     curl -sSL https://github.com/yannh/kubeconform/releases/download/{{ kubeconform.version }}/kubeconform-linux-amd64.tar.gz | \
     tar -xzf - kubeconform

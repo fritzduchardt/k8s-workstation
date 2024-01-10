@@ -5,7 +5,7 @@
   register: helm_bin
 
 - name: Install helm
-  become: yes
+  become: true
   shell: |
     curl -fsSL https://get.helm.sh/helm-{{ helm.version }}-linux-amd64.tar.gz | \
     tar -xzf - --strip-components=1 linux-amd64/helm

@@ -5,7 +5,7 @@
   register: fzf_bin
 
 - name: Install fzf
-  become: yes
+  become: true
   shell: |
     curl -L https://github.com/junegunn/fzf/releases/download/{{ fzf.version }}/fzf-{{ fzf.version }}-linux_amd64.tar.gz | \
     tar -xzf - fzf
