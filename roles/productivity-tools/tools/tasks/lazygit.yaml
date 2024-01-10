@@ -8,16 +8,8 @@
   become: true
   shell: |
     curl -L https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit.version }}/lazygit_{{ lazygit.version }}_Linux_x86_64.tar.gz | \
-    tar -xzf lazygit
+    tar -xzf - lazygit
     install -m 555 lazygit /usr/local/bin/lazygit-{{ lazygit.version }}
     ln -sf /usr/local/bin/lazygit-{{ lazygit.version }} /usr/local/bin/lazygit
     rm lazygit
-  when: not lazygit_bin.stat.exists
-
-- name: Create alias for lazygit
-  become: true
-  become_user: "{{ user.name }}"
-  shell: |
-    source ~/.zshrc
-    add_alias.sh lg "lazygit"
   when: not lazygit_bin.stat.exists

@@ -8,7 +8,7 @@
   become: true
   shell: |
     curl -L https://github.com/sharkdp/fd/releases/download/{{ fd.version }}/fd-{{ fd.version }}-x86_64-unknown-linux-musl.tar.gz | \ 
-    tar -xzf --strip-components=1 fd-{{ fd.version }}-x86_64-unknown-linux-musl/fd
+    tar -xzf - --strip-components=1 fd-{{ fd.version }}-x86_64-unknown-linux-musl/fd
     install -m 555 fd /usr/local/bin/fd-{{ fd.version }}
     ln -sf /usr/local/bin/fd-{{ fd.version }} /usr/local/bin/fd
     rm fd

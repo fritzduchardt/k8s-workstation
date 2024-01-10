@@ -5,6 +5,7 @@ RUN apt-get update \
     gcc \
     python3 \
     python3-pip \
+    sshpass \
     ssh && \
     rm -rf /var/lib/apt/lists/*
 RUN pip3 install --upgrade pip; \
