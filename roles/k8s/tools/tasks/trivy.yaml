@@ -1,0 +1,16 @@
+---
+- name: Check trivy present
+  stat:
+    path: /usr/local/bin/trivy-{{ trivy.version }}
+  register: trivy_bin
+
+- name: Install trivy
+  become: yes
+  shell: |
+    curl -LO 
+    https://github.com/carvel-dev/trivy/releases/download/{{ trivy.version }}/trivy-linux-amd64 \ |
+    tar -xzf trivy
+    install -m 555 trivy /usr/local/bin/sops-{{ trivy.version }}
+    ln -s /usr/local/bin/trivy-{{ trivy.version }} /usr/local/bin/trivy
+    rm trivy
+  when: not trivy_bin.stat.exists

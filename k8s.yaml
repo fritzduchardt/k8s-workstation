@@ -3,7 +3,6 @@
   vars:
     ansible_shell_executable: /usr/bin/zsh
   roles:
-    - role: k8s/aliases
     - role: k8s/tools
 
 

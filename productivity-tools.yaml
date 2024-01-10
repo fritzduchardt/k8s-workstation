@@ -7,7 +7,5 @@
     - role: productivity-tools/k8s-tools
     - role: productivity-tools/k8s-admin-shell
     - role: productivity-tools/tools
-    - role: productivity-tools/aliases
-    - role: productivity-tools/oh-my-zsh
 
 

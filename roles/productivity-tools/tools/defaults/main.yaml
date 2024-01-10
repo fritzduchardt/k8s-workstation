@@ -1,8 +1,10 @@
-rg:
-  version: 14.1.0
 fd:
   version: v9.0.0
+fzf:
+  version: 0.45.0
 lazygit:
   version: 0.40.2
+rg:
+  version: 14.1.0
 yq:
-  version: 4.40.5
+  version: v4.40.5

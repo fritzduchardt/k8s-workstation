@@ -1,4 +1,11 @@
 ---
+- name: Check k8s-admin-shell present
+  become: true
+  become_user: "{{ user.name }}"
+  stat:
+    path: ~/projects/github/k8s-admin-shell
+  register: k8s_admin_shell
+
 - name: Git checkout
   become: true
   become_user: "{{ user.name }}"
@@ -7,3 +14,4 @@
     dest: ~/projects/github/k8s-admin-shell
     version: master
     update: yes
+  when: not k8s_admin_shell.stat.exists

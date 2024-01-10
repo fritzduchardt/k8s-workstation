@@ -7,8 +7,8 @@
 - name: Install lazygit
   become: yes
   shell: |
-    curl -LO https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit.version }}/lazygit_{{ lazygit.version }}_Linux_x86_64.tar.gz
-    tar -xzf lazygit_{{ lazygit.version }}_Linux_x86_64.tar.gz lazygit
+    curl -L https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit.version }}/lazygit_{{ lazygit.version }}_Linux_x86_64.tar.gz | \
+    tar -xzf lazygit
     install -m 555 lazygit /usr/local/bin/lazygit-{{ lazygit.version }}
     ln -sf /usr/local/bin/lazygit-{{ lazygit.version }} /usr/local/bin/lazygit
     rm lazygit
