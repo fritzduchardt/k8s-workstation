@@ -1,0 +1,15 @@
+---
+- name: Check zoxide present
+  stat:
+    path: /usr/local/bin/zoxide-{{ zoxide.version }}
+  register: zoxide_bin
+
+- name: Install zoxide
+  become: true
+  shell: |
+    curl -L https://github.com/ajeetdsouza/zoxide/releases/download/v{{ zoxide.version }}/zoxide-{{ zoxide.version }}-x86_64-unknown-linux-musl.tar.gz | \ 
+    tar -xzf - zoxide
+    install -m 555 zoxide /usr/local/bin/zoxide-{{ zoxide.version }}
+    ln -sf /usr/local/bin/zoxide-{{ zoxide.version }} /usr/local/bin/zoxide
+    rm zoxide
+  when: not zoxide_bin.stat.exists

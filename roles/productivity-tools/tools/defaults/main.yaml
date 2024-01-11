@@ -8,3 +8,5 @@ rg:
   version: 14.1.0
 yq:
   version: v4.40.5
+zoxide:
+  version: 0.9.2
