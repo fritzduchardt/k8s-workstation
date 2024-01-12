@@ -1,0 +1,2 @@
+- include_tasks: rclone.yaml
+- include_tasks: termscp.yaml

@@ -1,0 +1,8 @@
+- name: Install aliases
+  hosts: workstations
+  vars:
+    ansible_shell_executable: /usr/bin/zsh
+  roles:
+    - role: s3
+
+

@@ -1,0 +1,4 @@
+rclone:
+  version: v1.65.1
+termscp:
+  version: v0.12.3
