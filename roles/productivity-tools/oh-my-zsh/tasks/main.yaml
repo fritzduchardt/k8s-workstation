@@ -12,7 +12,6 @@
   git:
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
     dest: ~/projects/github/ohmyzsh
-    version: latest
   when: not omz_dir.stat.exists
 
 - name: Copy zshrc
