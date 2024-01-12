@@ -3,22 +3,24 @@
   become: true
   become_user: "{{ user.name }}"
   stat:
-    path: ~/.oh-my-zsh
-  register: omz_bin
+    path: ~/projects/github/ohmyzsh
+  register: omz_dir
 
-- name: Install oh my zsh
+- name: Git checkout OMZ
   become: true
   become_user: "{{ user.name }}"
-  shell: |
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended --keep-zshrc"
-  when: not omz_bin.stat.exists
+  git:
+    repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+    dest: ~/projects/github/ohmyzsh
+    version: latest
+  when: not omz_dir.stat.exists
 
-- name: Install OMZ theme && plugins
+- name: Copy zshrc
+  copy:
+    src: ../../../../templates/zshrc.sh
+    dest: ~/.zshrc
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: '0644'
   become: true
   become_user: "{{ user.name }}"
-  shell: |
-    echo 'export ZSH="/home/fritz/.oh-my-zsh"' >> ~/.zshrc
-    echo 'ZSH_THEME="afowler"' >> ~/.zshrc
-    echo 'plugins=(colorize urltools sudo git docker kubectl web-search helm)' >> ~/.zshrc
-    echo 'source $ZSH/oh-my-zsh.sh' >> ~/.zshrc
-  when: not omz_bin.stat.exists

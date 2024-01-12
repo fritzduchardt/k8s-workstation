@@ -4,6 +4,8 @@ fzf:
   version: 0.45.0
 lazygit:
   version: 0.40.2
+nvim:
+  version: 0.9.5
 rg:
   version: 14.1.0
 yq:

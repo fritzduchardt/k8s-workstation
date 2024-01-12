@@ -11,7 +11,7 @@ kapp:
 kubeconform:
   version: v0.6.4
 kubectl:
-  version: v.129.0
+  version: v1.29.0
 myks:
   version: 3.2.1
 sops:
