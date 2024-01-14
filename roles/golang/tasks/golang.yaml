@@ -1,0 +1,12 @@
+---
+- name: Check go present
+  stat:
+    path: /usr/local/go
+  register: golang_dir
+
+- name: Install golang
+  become: true
+  shell: |
+    curl -L https://go.dev/dl/go{{ golang.version }}.linux-amd64.tar.gz | \
+    tar -xzf - -C /usr/local
+  when: not golang_dir.stat.exists

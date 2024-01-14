@@ -1,0 +1,6 @@
+- name: Install aliases
+  hosts: workstations
+  roles:
+    - role: golang
+
+
