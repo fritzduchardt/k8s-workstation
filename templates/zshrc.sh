@@ -10,8 +10,9 @@ plugins=(
   colorize
   docker
   fzf
-  git
+  git-slim
   helm
+  nmap
   kubectl
   sudo
   zoxide
