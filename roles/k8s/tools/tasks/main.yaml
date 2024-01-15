@@ -6,5 +6,6 @@
 - include_tasks: kubectl.yaml
 - include_tasks: myks.yaml
 - include_tasks: sops.yaml
+- include_tasks: trivy.yaml
 - include_tasks: vendir.yaml
 - include_tasks: ytt.yaml
