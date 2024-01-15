@@ -1,0 +1,15 @@
+---
+- name: Check ytop present
+  stat:
+    path: /usr/local/bin/ytop-{{ ytop.version }}
+  register: ytop_bin
+
+- name: Install ytop
+  become: true
+  shell: |
+    curl -L https://github.com/cjbassi/ytop/releases/download/{{ ytop.version }}/ytop-{{ ytop.version }}-x86_64-unknown-linux-gnu.tar.gz | \ 
+    tar -xzf - ytop
+    install -m 555 ytop /usr/local/bin/ytop-{{ ytop.version }}
+    ln -sf /usr/local/bin/ytop-{{ ytop.version }} /usr/local/bin/ytop
+    rm ytop
+  when: not ytop_bin.stat.exists

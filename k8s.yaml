@@ -4,5 +4,5 @@
     ansible_shell_executable: /usr/bin/zsh
   roles:
     - role: k8s/tools
-
+    - role: productivity-tools/k8s-admin-shell
 

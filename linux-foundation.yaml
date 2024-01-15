@@ -3,3 +3,4 @@
   roles:
     - role: linux/adduser
     - role: linux/ssh
+    - role: linux/tools
