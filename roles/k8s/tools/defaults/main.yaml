@@ -1,9 +1,9 @@
 argocd:
   version: v2.7.15
 helm:
-  version: v3.13.3
+  version: v3.14.0
 k9s:
-  version: v0.31.4
+  version: v0.31.6
 kapp:
   version: v0.59.2
 kubeconform:
