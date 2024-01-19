@@ -5,7 +5,7 @@ helm:
 k9s:
   version: v0.31.6
 kapp:
-  version: v0.59.2
+  version: v0.60.0
 kubeconform:
   version: v0.6.4
 kubectl:
