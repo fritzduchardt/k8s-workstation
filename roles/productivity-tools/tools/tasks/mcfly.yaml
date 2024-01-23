@@ -1,15 +1,15 @@
 ---
 - name: Check mcfly present
   stat:
-    path: /usr/local/bin/mcfly-{{ mcfly.version }}
+    path: /usr/local/bin/mcfly-{{ versions.mcfly }}
   register: mcfly_bin
 
 - name: Install mcfly
   become: true
   shell: |
-    curl -L https://github.com/cantino/mcfly/releases/download/{{ mcfly.version }}/mcfly-{{ mcfly.version }}-i686-unknown-linux-musl.tar.gz | \ 
+    curl -L {{ download_urls.mcfly }} | \ 
     tar -xzf - mcfly
-    install -m 555 mcfly /usr/local/bin/mcfly-{{ mcfly.version }}
-    ln -sf /usr/local/bin/mcfly-{{ mcfly.version }} /usr/local/bin/mcfly
+    install -m 555 mcfly /usr/local/bin/mcfly-{{ versions.mcfly }}
+    ln -sf /usr/local/bin/mcfly-{{ versions.mcfly }} /usr/local/bin/mcfly
     rm mcfly
   when: not mcfly_bin.stat.exists

@@ -1,15 +1,15 @@
 ---
 - name: Check lazygit present
   stat:
-    path: /usr/local/bin/lazygit-{{ lazygit.version }}
+    path: /usr/local/bin/lazygit-{{ versions.lazygit }}
   register: lazygit_bin
 
 - name: Install lazygit
   become: true
   shell: |
-    curl -L https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit.version }}/lazygit_{{ lazygit.version }}_Linux_x86_64.tar.gz | \
+    curl -L {{ download_urls.lazygit }} | \
     tar -xzf - lazygit
-    install -m 555 lazygit /usr/local/bin/lazygit-{{ lazygit.version }}
-    ln -sf /usr/local/bin/lazygit-{{ lazygit.version }} /usr/local/bin/lazygit
+    install -m 555 lazygit /usr/local/bin/lazygit-{{ versions.lazygit }}
+    ln -sf /usr/local/bin/lazygit-{{ versions.lazygit }} /usr/local/bin/lazygit
     rm lazygit
   when: not lazygit_bin.stat.exists

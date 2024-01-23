@@ -1,3 +1,4 @@
+- include_tasks: bat.yaml
 - include_tasks: fd.yaml
 - include_tasks: fzf.yaml
 - include_tasks: lazygit.yaml

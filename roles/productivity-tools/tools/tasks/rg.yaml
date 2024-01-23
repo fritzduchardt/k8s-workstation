@@ -1,15 +1,15 @@
 ---
 - name: Check rg present
   stat:
-    path: /usr/local/bin/rg-{{ rg.version }}
+    path: /usr/local/bin/rg-{{ versions.rg }}
   register: rg_bin
 
 - name: Install ripgrep
   become: true
   shell: |
-    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/{{ rg.version }}/ripgrep-{{ rg.version }}-x86_64-unknown-linux-musl.tar.gz | \
-    tar -xzf - --strip-components=1 ripgrep-{{ rg.version }}-x86_64-unknown-linux-musl/rg
-    install -m 555 rg /usr/local/bin/rg-{{ rg.version }}
-    ln -sf /usr/local/bin/rg-{{ rg.version }} /usr/local/bin/rg
+    curl -LO {{ download_urls.rg }} | \
+    tar -xzf - --strip-components=1 ripgrep-{{ versions.rg }}-x86_64-unknown-linux-musl/rg
+    install -m 555 rg /usr/local/bin/rg-{{ versions.rg }}
+    ln -sf /usr/local/bin/rg-{{ versions.rg }} /usr/local/bin/rg
     rm rg
   when: not rg_bin.stat.exists

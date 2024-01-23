@@ -1,15 +1,15 @@
 ---
 - name: Check yq present
   stat:
-    path: /usr/local/bin/yq-{{ yq.version }}
+    path: /usr/local/bin/yq-{{ versions.yq }}
   register: yq_bin
 
 - name: Install yq
   become: true
   shell: |
-    curl -sSL https://github.com/mikefarah/yq/releases/download/{{ yq.version }}/yq_linux_amd64.tar.gz | \
+    curl -sSL {{ download_urls.yq }} | \
     tar -xzf - ./yq_linux_amd64
-    install -m 555 ./yq_linux_amd64 /usr/local/bin/yq-{{ yq.version }}
-    ln -sf /usr/local/bin/yq-{{ yq.version }} /usr/local/bin/yq
+    install -m 555 ./yq_linux_amd64 /usr/local/bin/yq-{{ versions.yq }}
+    ln -sf /usr/local/bin/yq-{{ versions.yq }} /usr/local/bin/yq
     rm -rf ./yq_linux_amd64
   when: not yq_bin.stat.exists
