@@ -1,5 +1,5 @@
 - name: Install aliases
-  hosts: workstations
+  hosts: "*"
   vars:
     ansible_shell_executable: /usr/bin/zsh
   roles:

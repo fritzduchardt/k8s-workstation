@@ -3,7 +3,6 @@
 - include_tasks: fzf.yaml
 - include_tasks: lazygit.yaml
 - include_tasks: mcfly.yaml
-- include_tasks: nvim.yaml
 - include_tasks: rg.yaml
 - include_tasks: yq.yaml
 - include_tasks: zoxide.yaml

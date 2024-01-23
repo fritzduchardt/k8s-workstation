@@ -1,5 +1,5 @@
 - name: Install essential packages
-  hosts: workstations
+  hosts: "*"
   roles:
     - role: fedora/zsh
     - role: fedora/essential-packages

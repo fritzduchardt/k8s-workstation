@@ -7,8 +7,8 @@
 - name: Install ripgrep
   become: true
   shell: |
-    curl -LO {{ download_urls.rg }} | \
-    tar -xzf - --strip-components=1 ripgrep-{{ versions.rg }}-x86_64-unknown-linux-musl/rg
+    curl -L {{ download_urls.rg }} | \
+    tar -xzf - --strip-components=1 --wildcards "*/rg"
     install -m 555 rg /usr/local/bin/rg-{{ versions.rg }}
     ln -sf /usr/local/bin/rg-{{ versions.rg }} /usr/local/bin/rg
     rm rg

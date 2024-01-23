@@ -1,0 +1,6 @@
+user:
+  name: fritz
+  create_home: yes
+  system: no
+  shell: /usr/bin/bash
+  ssh_pub_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoP3rZa0Y3rVSD+1WufphnXyYbC66npUXKqkJyi/qcPbGma7ovKmhft6xGos+ZaLpPLrsLQ/uk4nKtXVSDD0ebznDoaUMGHW5Ti77VR2hMl9R1bk/cbekpJZzR8MMVAMfuoJeRmOuB16D0F5AaDeLtGtbzZfwW+nHPbzldQ8UBMrROvTxOt5cegd36oebEc4R9pDnxOrqrMkmemHLH/tdlg7xlJA0+cxjFWfzFiBqtdS111DnnUC+Z/ffRLRv378hJfd41YMJUdL/JJn+cDiJ0k4T6gg25yiZn9f3sv0cEjWbRCL1ya73BcYAlzZEuxIYeVLzVFjTx+xnq8+mv3HjH fritz@fritz-UX430UNR"

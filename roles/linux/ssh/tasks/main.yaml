@@ -11,8 +11,8 @@
     if [ ! -f ~/.ssh/authorized_keys ]; then
       touch ~/.ssh/authorized_keys
     fi
-    if ! grep -q "ssh-rsa {{ user.ssh_pub_key }}" ~/.ssh/authorized_keys; then
-      echo "ssh-rsa {{ user.ssh_pub_key }}" >> ~/.ssh/authorized_keys
+    if ! grep -q "{{ user.ssh_pub_key }}" ~/.ssh/authorized_keys; then
+      echo "{{ user.ssh_pub_key }}" >> ~/.ssh/authorized_keys
     fi
   when: not ssh_dir.stat.exists
 
@@ -24,13 +24,9 @@
     line: 'PubkeyAuthentication yes'
   when: not ssh_dir.stat.exists
 
-- name: List of usernames
-  set_fact:
-    joined_usernames: "{{ users | map(attribute='username') | join(' ') }}"
-
 - name: Add or update AllowUsers directive
   become: yes
   lineinfile:
     path: /etc/ssh/sshd_config
     regexp: 'AllowUsers .*'
-    line: "AllowUsers {{ joined_usernames }}"
+    line: "AllowUsers {{ user.name }}"

@@ -8,7 +8,7 @@
   become: true
   shell: |
     curl -L {{ download_urls.bat }} | \ 
-    tar -xzf - --strip-components=1 bat-{{ versions.bat }}-i686-unknown-linux-musl/bat
+    tar -xzf - --strip-components=1 --wildcards "*/bat"
     install -m 555 bat /usr/local/bin/bat-{{ versions.bat }}
     ln -sf /usr/local/bin/bat-{{ versions.bat }} /usr/local/bin/bat
     rm bat

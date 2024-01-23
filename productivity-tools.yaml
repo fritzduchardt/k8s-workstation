@@ -1,9 +1,8 @@
 - name: Install aliases
-  hosts: workstations
+  hosts: "*"
   vars:
     ansible_shell_executable: /usr/bin/zsh
   roles:
-    - role: productivity-tools/linux-tools
     - role: productivity-tools/tools
     - role: productivity-tools/oh-my-zsh
 

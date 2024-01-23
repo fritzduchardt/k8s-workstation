@@ -8,7 +8,7 @@
   become: true
   shell: |
     curl -L {{ download_urls.fd }} | \ 
-    tar -xzf - --strip-components=1 fd-{{ versions.fd }}-x86_64-unknown-linux-musl/fd
+    tar -xzf - --strip-components=1 --wildcards "*/fd"
     install -m 555 fd /usr/local/bin/fd-{{ versions.fd }}
     ln -sf /usr/local/bin/fd-{{ versions.fd }} /usr/local/bin/fd
     rm fd

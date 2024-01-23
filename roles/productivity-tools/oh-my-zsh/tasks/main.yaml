@@ -1,18 +1,19 @@
 ---
-- name: Check OMZ present
-  become: true
-  become_user: "{{ user.name }}"
-  stat:
-    path: ~/projects/github/ohmyzsh
-  register: omz_dir
-
 - name: Git checkout OMZ
   become: true
   become_user: "{{ user.name }}"
   git:
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
     dest: ~/projects/github/ohmyzsh
-  when: not omz_dir.stat.exists
+    update: yes
+
+- name: Git checkout FMZ
+  become: true
+  become_user: "{{ user.name }}"
+  git:
+    repo: 'https://github.com/fritzduchardt/fritzmyzsh.git'
+    dest: ~/projects/github/fritzmyzsh
+    update: yes
 
 - name: Copy zshrc
   copy:

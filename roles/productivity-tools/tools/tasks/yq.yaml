@@ -8,8 +8,8 @@
   become: true
   shell: |
     curl -sSL {{ download_urls.yq }} | \
-    tar -xzf - ./yq_linux_amd64
-    install -m 555 ./yq_linux_amd64 /usr/local/bin/yq-{{ versions.yq }}
+    tar -xzf - --wildcards "./yq_linux_*"
+    install -m 555 ./yq_linux_* /usr/local/bin/yq-{{ versions.yq }}
     ln -sf /usr/local/bin/yq-{{ versions.yq }} /usr/local/bin/yq
-    rm -rf ./yq_linux_amd64
+    rm -rf ./yq_linux_*
   when: not yq_bin.stat.exists
