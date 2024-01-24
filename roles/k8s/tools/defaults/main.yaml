@@ -10,6 +10,8 @@ kubeconform:
   version: v0.6.4
 kubectl:
   version: v1.29.0
+krew:
+  version: v0.4.4
 myks:
   version: 3.3.1
 sops:

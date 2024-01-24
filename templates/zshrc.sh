@@ -11,7 +11,6 @@ plugins=(
   colorize
   dotfiles
   docker
-  fzf
   git-slim
   helm
   nmap
