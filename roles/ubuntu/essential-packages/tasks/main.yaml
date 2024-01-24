@@ -11,3 +11,8 @@
   become: true
   shell: |
     update-alternatives --set editor /usr/bin/vim.basic
+
+- name: Set zsh as default shell
+  become: true
+  shell: |
+    chsh -s $(which zsh)
