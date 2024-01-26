@@ -7,7 +7,6 @@ plugins=(
   zshrc
   aliases
   argocd
-  autojump
   colorize
   dotfiles
   docker
@@ -17,6 +16,7 @@ plugins=(
   k9s
   kubectl
   sudo
+  systemd
   zoxide
 )
 source $ZSH/oh-my-zsh.sh

@@ -1,7 +1,7 @@
 arm:
   hosts:
     friclu-1:
-      ansible_host: 192.168.0.22
+      ansible_host: 192.168.0.23
       ansible_user: fritz
     friclu-2:
       ansible_host: 192.168.0.24

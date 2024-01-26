@@ -1,5 +1,5 @@
 user:
-  name: fritz
+  name: root
   create_home: yes
   system: no
   shell: /usr/bin/bash
