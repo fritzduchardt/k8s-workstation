@@ -15,6 +15,7 @@ plugins=(
   nmap
   k9s
   kubectl
+  kubeswitch
   sudo
   systemd
   zoxide

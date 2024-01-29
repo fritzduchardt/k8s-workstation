@@ -6,12 +6,14 @@ k9s:
   version: v0.31.6
 kapp:
   version: v0.60.0
+krew:
+  version: v0.4.4
 kubeconform:
   version: v0.6.4
 kubectl:
   version: v1.29.0
-krew:
-  version: v0.4.4
+kubeswitch:
+  version: 0.7.2
 myks:
   version: 3.3.1
 sops:
