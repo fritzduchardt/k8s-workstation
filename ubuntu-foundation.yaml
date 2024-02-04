@@ -1,7 +1,7 @@
 - name: Install essential packages
   hosts: "*"
   roles:
-    - role: ubuntu/essential-packages
+#    - role: ubuntu/essential-packages
     - role: ubuntu/network-packages
 #    - role: ubuntu/docker
 

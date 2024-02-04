@@ -1,12 +1,19 @@
 ---
-- name: Check go present
+- name: Check goenv present
   stat:
     path: /usr/local/go
-  register: golang_dir
+  register: goenv_dir
+
+- name: Git checkout goenv
+  git:
+    repo: 'https://github.com/go-nv/goenv.git'
+    dest: ~/.goenv
+    version: master
+    update: yes
+  when: not goenv_dir.stat.exists
 
 - name: Install golang
   become: true
   shell: |
-    curl -L https://go.dev/dl/go{{ golang.version }}.linux-amd64.tar.gz | \
-    tar -xzf - -C /usr/local
+    goenv install {{ golang.version }}.
   when: not golang_dir.stat.exists

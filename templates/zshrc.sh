@@ -11,6 +11,7 @@ plugins=(
   dotfiles
   docker
   git-slim
+  goenv
   helm
   nmap
   k9s
