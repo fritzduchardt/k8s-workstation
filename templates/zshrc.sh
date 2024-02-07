@@ -13,6 +13,7 @@ plugins=(
   git-slim
   goenv
   helm
+  myks
   nmap
   k9s
   kubectl
