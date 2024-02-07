@@ -1,9 +1,9 @@
 argocd:
-  version: v2.9.6
+  version: v2.10.0
 helm:
   version: v3.14.0
 k9s:
-  version: v0.31.6
+  version: v0.31.8
 kapp:
   version: v0.60.0
 krew:
@@ -19,8 +19,8 @@ myks:
 sops:
   version: v3.8.1
 trivy:
-  version: 0.49.0
+  version: 0.49.1
 vendir:
   version: v0.39.0
 ytt:
-  version: v0.46.3
+  version: v0.48.0
