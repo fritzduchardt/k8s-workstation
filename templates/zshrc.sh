@@ -16,6 +16,7 @@ plugins=(
   myks
   nmap
   k9s
+  kind
   kubectl
   kubeswitch
   sudo

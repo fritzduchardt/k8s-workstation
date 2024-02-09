@@ -5,7 +5,7 @@ versions:
   lazygit: 0.40.2
   mcfly: v0.8.4
   rg: 14.1.0
-  yq: v4.40.5
+  yq: v4.40.7
   zoxide: 0.9.2
 download_urls:
   bat: https://github.com/sharkdp/bat/releases/download/{{ versions.bat }}/bat-{{ versions.bat }}-i686-unknown-linux-musl.tar.gz
