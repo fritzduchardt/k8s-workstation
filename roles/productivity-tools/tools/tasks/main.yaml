@@ -1,6 +1,7 @@
 - include_tasks: bat.yaml
 - include_tasks: fd.yaml
 - include_tasks: fzf.yaml
+- include_tasks: lazydocker.yaml
 - include_tasks: lazygit.yaml
 - include_tasks: mcfly.yaml
 - include_tasks: rg.yaml
