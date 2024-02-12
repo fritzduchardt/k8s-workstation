@@ -10,6 +10,7 @@ plugins=(
   colorize
   dotfiles
   docker
+  find
   git-slim
   goenv
   helm
