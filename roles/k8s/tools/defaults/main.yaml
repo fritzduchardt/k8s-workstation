@@ -1,9 +1,9 @@
 argocd:
-  version: v2.10.0
+  version: v2.10.1
 helm:
-  version: v3.14.0
+  version: v3.14.1
 k9s:
-  version: v0.31.8
+  version: v0.31.9
 kapp:
   version: v0.60.0
 krew:

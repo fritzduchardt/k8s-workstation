@@ -1,7 +1,7 @@
-- name: Install k8s tools
+- name: Install dev-tools
   hosts: "*"
   vars:
     ansible_shell_executable: /usr/bin/zsh
   roles:
-    - role: k8s/tools
+    - role: dev-tools
 

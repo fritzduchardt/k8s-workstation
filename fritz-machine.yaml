@@ -1,0 +1,7 @@
+- name: Set up the K8s workstations
+  hosts: "*"
+  roles:
+    - role: linux/tools
+    - role: k8s/tools
+    - role: productivity-tools/tools
+    - role: dev-tools

@@ -21,7 +21,7 @@
   lineinfile:
     path: /etc/ssh/sshd_config
     regexp: '#PubkeyAuthentication yes'
-    line: 'PubkeyAuthentication yes'
+    line: 'PubkeyAuthentication yes'ip -d link show dev eth0.100
   when: not ssh_dir.stat.exists
 
 - name: Add or update AllowUsers directive
@@ -29,4 +29,11 @@
   lineinfile:
     path: /etc/ssh/sshd_config
     regexp: 'AllowUsers .*'
-    line: "AllowUsers {{ user.name }}"
+    line: "AllowUsers {{ user.name }} root"
+
+- name: Permit root login
+  become: yes
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '#PermitRootLogin.*'
+    line: "PermitRootLogin yes"

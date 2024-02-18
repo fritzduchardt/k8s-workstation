@@ -1,0 +1,15 @@
+---
+- name: Check task present
+  stat:
+    path: /usr/local/bin/task-{{ task.version }}
+  register: task_bin
+
+- name: Install task
+  become: true
+  shell: |
+    curl -L https://github.com/go-task/task/releases/download/{{ task.version }}/task_linux_amd64.tar.gz | \ 
+    tar -xzf - task
+    install -m 555 task /usr/local/bin/task-{{ task.version }}
+    ln -sf /usr/local/bin/task-{{ task.version }} /usr/local/bin/task
+    rm task
+  when: not task_bin.stat.exists

@@ -1,4 +1,4 @@
-- name: Install aliases
+- name: Install productivity tools
   hosts: "*"
   vars:
     ansible_shell_executable: /usr/bin/zsh
