@@ -1,7 +1,7 @@
 argocd:
   version: v2.10.1
 helm:
-  version: v3.14.1
+  version: v3.14.2
 k9s:
   version: v0.31.9
 kapp:
@@ -15,12 +15,12 @@ kubectl:
 kubeswitch:
   version: 0.7.2
 myks:
-  version: 3.3.1
+  version: 3.4.1
 sops:
   version: v3.8.1
 trivy:
   version: 0.49.1
 vendir:
-  version: v0.39.0
+  version: v0.40.0
 ytt:
   version: v0.48.0
