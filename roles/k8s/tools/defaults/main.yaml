@@ -18,6 +18,8 @@ myks:
   version: 3.4.1
 sops:
   version: v3.8.1
+stern:
+  version: 1.28.0
 trivy:
   version: 0.49.1
 vendir:
