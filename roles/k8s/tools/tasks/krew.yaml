@@ -8,7 +8,7 @@
   become: true
   shell: |
     curl -L "https://github.com/kubernetes-sigs/krew/releases/download/{{ krew.version }}/krew-linux_amd64.tar.gz" | \
-    tar -xzf - ./krew-linux_amd64
+    tar -xzf - krew-linux_amd64
     install -m 555 krew-linux_amd64 /usr/local/bin/krew-{{ krew.version }}
     ln -sf /usr/local/bin/krew-{{ krew.version }} /usr/local/bin/krew
     rm krew-linux_amd64

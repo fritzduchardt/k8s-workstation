@@ -8,8 +8,9 @@
   become: true
   shell: |
     curl -L https://github.com/stern/stern/releases/download/v{{ stern.version }}/stern_{{ stern.version }}_linux_amd64.tar.gz | \
-    tar -xzf - ./stern
+    tar -xzf - stern
     install -m 555 stern /usr/local/bin/stern-{{ stern.version }}
     ln -sf /usr/local/bin/stern-{{ stern.version }} /usr/local/bin/stern
+    rm stern
   when: not stern_bin.stat.exists
 
