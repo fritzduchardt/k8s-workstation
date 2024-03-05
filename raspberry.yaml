@@ -1,0 +1,10 @@
+- name: Install essential packages
+  hosts: "*"
+  roles:
+#    - role: linux/adduser
+#    - role: linux/ssh
+#    - role: linux/tools
+#    - role: ubuntu/essential-packages
+#    - role: ubuntu/network-packages
+    - role: productivity-tools/tools
+    - role: productivity-tools/oh-my-zsh

@@ -1,5 +1,4 @@
   essential_packages:
-    - autojump
     - build-essential
     - ca-certificates
     - curl
