@@ -18,3 +18,4 @@
   become: true
   shell: |
     krew install neat
+    krew install ns
