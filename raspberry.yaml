@@ -7,4 +7,5 @@
     - role: ubuntu/essential-packages
     - role: ubuntu/network-packages
     - role: productivity-tools/tools
+    - role: productivity-tools/linux-tools
     - role: productivity-tools/oh-my-zsh

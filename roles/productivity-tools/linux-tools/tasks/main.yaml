@@ -15,15 +15,3 @@
     version: master
     update: yes
   when: not linux_tools.stat.exists
-
-- name: Install aliases
-  shell: ~/projects/github/linux-tools/zsh/add_source.sh ~/projects/github/linux-tools/aliases.sh linux-tools
-  become: true
-  become_user: "{{ user.name }}"
-  when: not linux_tools.stat.exists
-
-- name: Install path
-  shell: ~/projects/github/linux-tools/zsh/add_path.sh ~/projects/github/linux-tools/zsh linux-tools
-  become: true
-  become_user: "{{ user.name }}"
-  when: not linux_tools.stat.exists
