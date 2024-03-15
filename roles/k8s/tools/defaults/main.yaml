@@ -1,7 +1,7 @@
 argocd:
   version: v2.10.1
 helm:
-  version: v3.14.2
+  version: v3.14.3
 k9s:
   version: v0.32.1
 kapp:
@@ -15,7 +15,7 @@ kubectl:
 kubeswitch:
   version: 0.7.2
 myks:
-  version: 3.4.1
+  version: 3.4.2
 sops:
   version: v3.8.1
 stern:

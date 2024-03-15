@@ -5,3 +5,4 @@
     - role: k8s/tools
     - role: productivity-tools/tools
     - role: dev-tools
+    - role: s3

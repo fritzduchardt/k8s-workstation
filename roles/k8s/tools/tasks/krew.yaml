@@ -19,3 +19,4 @@
   shell: |
     krew install neat
     krew install ns
+    krew install modify-secret

@@ -1,7 +1,7 @@
 versions:
   bat: v0.24.0
   fd: v9.0.0
-  fzf: 0.47.0
+  fzf: 0.48.0
   lazydocker: 0.23.1
   lazygit: 0.40.2
   mcfly: v0.8.4
