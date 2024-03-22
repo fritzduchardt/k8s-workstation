@@ -1,11 +1,11 @@
 arm:
   hosts:
     friclu-1:
-      ansible_host: 192.168.0.23
-      ansible_user: fritz
+      ansible_host: friclu-1
+      ansible_user: root
     friclu-2:
-      ansible_host: 192.168.0.24
-      ansible_user: fritz
+      ansible_host: friclu-2
+      ansible_user: root
     friclu-3:
-      ansible_host: 192.168.0.8
-      ansible_user: fritz
+      ansible_host: friclu-3
+      ansible_user: root
