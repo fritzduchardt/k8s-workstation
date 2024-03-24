@@ -3,7 +3,7 @@ versions:
   fd: v9.0.0
   fzf: 0.48.1
   lazydocker: 0.23.1
-  lazygit: 0.40.2
+  lazygit: 0.41.0
   mcfly: v0.8.4
   rg: 14.1.0
   yq: v4.42.1
