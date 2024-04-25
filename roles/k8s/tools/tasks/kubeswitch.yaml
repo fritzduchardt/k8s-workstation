@@ -7,7 +7,7 @@
 - name: Install kubeswitch binary
   become: true
   shell: |
-    curl -LO https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ kubeswitch.version }}/switcher_linux_amd64 | \
+    curl -LO https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ kubeswitch.version }}/switcher_linux_amd64
     install -m 555 switcher_linux_amd64 /usr/local/bin/kubeswitch-{{ kubeswitch.version }}
     ln -sf /usr/local/bin/kubeswitch-{{ kubeswitch.version }} /usr/local/bin/switcher
     rm switcher_linux_amd64
