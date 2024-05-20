@@ -20,3 +20,4 @@
     krew install neat
     krew install ns
     krew install modify-secret
+    krew install tree

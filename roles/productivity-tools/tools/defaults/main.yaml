@@ -4,7 +4,7 @@ versions:
   fzf: 0.50.0
   lazydocker: 0.23.1
   lazygit: 0.41.0
-  mcfly: v0.8.4
+  mcfly: v0.8.6
   rg: 14.1.0
   yq: v4.42.1
   zoxide: 0.9.2

@@ -5,6 +5,7 @@
 - include_tasks: krew.yaml
 - include_tasks: kubeconform.yaml
 - include_tasks: kubectl.yaml
+- include_tasks: kubecolor.yaml
 - include_tasks: kubeswitch.yaml
 - include_tasks: myks.yaml
 - include_tasks: sops.yaml

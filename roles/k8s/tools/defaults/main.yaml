@@ -14,6 +14,8 @@ kubectl:
   version: v1.29.0
 kubeswitch:
   version: 0.9.1
+kubecolor:
+  version: 0.3.2
 myks:
   version: 3.4.2
 sops:
@@ -21,7 +23,7 @@ sops:
 stern:
   version: 1.28.0
 trivy:
-  version: 0.50.1
+  version: 0.51.2
 vendir:
   version: v0.40.1
 ytt:
