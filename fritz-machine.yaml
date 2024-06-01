@@ -2,7 +2,12 @@
   hosts: "*"
   roles:
     - role: linux/tools
+      tags: linux
     - role: k8s/tools
+      tags: k8s
     - role: productivity-tools/tools
+      tags: tools
     - role: dev-tools
+      tags: dev
     - role: s3
+      tags: s3
