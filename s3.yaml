@@ -1,8 +1,0 @@
-- name: Install s3 tools
-  hosts: "*"
-  vars:
-    ansible_shell_executable: /usr/bin/zsh
-  roles:
-    - role: s3
-
-

@@ -1,13 +1,15 @@
 ---
 - name: Check bat present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/bat-{{ versions.bat }}
   register: bat_bin
 
 - name: Install bat
   become: true
-  shell: |
-    curl -L {{ download_urls.bat }} | \ 
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
+    curl -L {{ download_urls.bat }} | \
     tar -xzf - --strip-components=1 --wildcards "*/bat"
     install -m 555 bat /usr/local/bin/bat-{{ versions.bat }}
     ln -sf /usr/local/bin/bat-{{ versions.bat }} /usr/local/bin/bat

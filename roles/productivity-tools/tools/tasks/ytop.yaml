@@ -1,0 +1,17 @@
+---
+- name: Check ytop present
+  ansible.builtin.stat:
+    path: /usr/local/bin/ytop-{{ versions.ytop }}
+  register: ytop_bin
+
+- name: Install ytop
+  become: true
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
+    curl -L {{ versions.ytop }} | \ 
+    tar -xzf - ytop
+    install -m 555 ytop /usr/local/bin/ytop-{{ versions.ytop }}
+    ln -sf /usr/local/bin/ytop-{{ versions.ytop }} /usr/local/bin/ytop
+    rm ytop
+  when: not ytop_bin.stat.exists

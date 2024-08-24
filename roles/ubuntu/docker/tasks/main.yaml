@@ -1,12 +1,14 @@
 ---
 - name: Check docker present
-  stat:
+  ansible.builtin.stat:
     path: /etc/apt/keyrings/docker.gpg
   register: docker
 
 - name: Prepare Docker
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     sudo install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
@@ -20,10 +22,10 @@
 
 - name: Install Docker
   become: true
-  apt:
+  ansible.builtin.apt:
     name: '{{ item }}'
     state: latest
-    update_cache: yes
+    update_cache: true
   with_items:
     - docker-ce
     - docker-ce-cli
@@ -34,6 +36,6 @@
 
 - name: Configure Docker
   become: true
-  shell: "sudo usermod -aG docker {{ user.name }}"
+  changed_when: true
+  ansible.builtin.command: "sudo usermod -aG docker {{ user.name }}"
   when: not docker.stat.exists
-

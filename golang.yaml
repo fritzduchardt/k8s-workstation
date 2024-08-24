@@ -1,6 +1,0 @@
-- name: Install golang
-  hosts: "*"
-  roles:
-    - role: golang
-
-

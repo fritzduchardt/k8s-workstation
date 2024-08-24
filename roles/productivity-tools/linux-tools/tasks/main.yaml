@@ -2,16 +2,16 @@
 - name: Check linux-tools present
   become: true
   become_user: "{{ user.name }}"
-  stat:
+  ansible.builtin.stat:
     path: ~/projects/github/linux-tools
   register: linux_tools
-  
+
 - name: Git checkout
   become: true
   become_user: "{{ user.name }}"
-  git:
+  ansible.builtin.git:
     repo: 'https://github.com/fritzduchardt/linux-tools.git'
     dest: ~/projects/github/linux-tools
     version: master
-    update: yes
+    update: true
   when: not linux_tools.stat.exists

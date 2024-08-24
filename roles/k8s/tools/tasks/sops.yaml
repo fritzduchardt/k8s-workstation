@@ -1,12 +1,13 @@
 ---
 - name: Check sops present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/sops-{{ sops.version }}
   register: sops_bin
 
 - name: Install sops
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
     curl -LO https://github.com/getsops/sops/releases/download/{{ sops.version }}/sops-{{ sops.version }}.linux.amd64
     install -m 555 sops-{{ sops.version }}.linux.amd64 /usr/local/bin/sops-{{ sops.version }}
     ln -sf /usr/local/bin/sops-{{ sops.version }} /usr/local/bin/sops

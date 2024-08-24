@@ -1,12 +1,14 @@
 ---
 - name: Check fzf present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/fzf-{{ versions.fzf }}
   register: fzf_bin
 
 - name: Install fzf
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L {{ download_urls.fzf }} | \
     tar -xzf - fzf
     install -m 555 fzf /usr/local/bin/fzf-{{ versions.fzf }}

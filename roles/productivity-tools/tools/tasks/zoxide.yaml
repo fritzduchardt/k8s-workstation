@@ -1,12 +1,14 @@
 ---
 - name: Check zoxide present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/zoxide-{{ versions.zoxide }}
   register: zoxide_bin
 
 - name: Install zoxide
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L {{ download_urls.zoxide }} | \ 
     tar -xzf - zoxide
     install -m 555 zoxide /usr/local/bin/zoxide-{{ versions.zoxide }}

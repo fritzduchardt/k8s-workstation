@@ -1,12 +1,14 @@
 ---
 - name: Check stern present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/stern-{{ stern.version }}
   register: stern_bin
 
 - name: Install stern
   become: true
-  shell: |
+  changed_when: false
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L https://github.com/stern/stern/releases/download/v{{ stern.version }}/stern_{{ stern.version }}_linux_amd64.tar.gz | \
     tar -xzf - stern
     install -m 555 stern /usr/local/bin/stern-{{ stern.version }}

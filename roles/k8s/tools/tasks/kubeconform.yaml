@@ -1,12 +1,14 @@
 ---
 - name: Check kubeconform present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/kubeconform-{{ kubeconform.version }}
   register: kubeconform_bin
 
 - name: Install kubeconform
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -sSL https://github.com/yannh/kubeconform/releases/download/{{ kubeconform.version }}/kubeconform-linux-amd64.tar.gz | \
     tar -xzf - kubeconform
     install -m 555 kubeconform /usr/local/bin/kubeconform-{{ kubeconform.version }}

@@ -1,12 +1,14 @@
 ---
 - name: Check fd present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/fd-{{ versions.fd }}
   register: fd_bin
 
 - name: Install fd
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L {{ download_urls.fd }} | \ 
     tar -xzf - --strip-components=1 --wildcards "*/fd"
     install -m 555 fd /usr/local/bin/fd-{{ versions.fd }}

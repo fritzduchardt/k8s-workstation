@@ -1,7 +1,0 @@
-- name: Install dev-tools
-  hosts: "*"
-  vars:
-    ansible_shell_executable: /usr/bin/zsh
-  roles:
-    - role: dev-tools
-

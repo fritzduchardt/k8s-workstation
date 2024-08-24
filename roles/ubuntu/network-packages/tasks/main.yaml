@@ -1,9 +1,8 @@
 ---
 - name: Install network packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name: '{{ item }}'
     state: latest
-    update_cache: yes
+    update_cache: true
   with_items: '{{ network_packages }}'
-

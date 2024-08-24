@@ -1,12 +1,13 @@
 ---
 - name: Check ytt present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/ytt-{{ ytt.version }}
   register: ytt_bin
 
 - name: Install ytt
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
     curl -LO https://github.com/carvel-dev/ytt/releases/download/v0.46.3/ytt-linux-amd64
     install -m 555 ytt-linux-amd64 /usr/local/bin/ytt-{{ ytt.version }}
     ln -f -s /usr/local/bin/ytt-{{ ytt.version }} /usr/local/bin/ytt

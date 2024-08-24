@@ -1,6 +1,0 @@
-- name: Set up the K8s workstations
-  hosts: "*"
-  roles:
-    - role: linux/adduser
-    - role: linux/ssh
-    - role: linux/tools

@@ -1,12 +1,14 @@
 ---
 - name: Check helm present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/helm-{{ helm.version }}
   register: helm_bin
 
 - name: Install helm
   become: true
-  shell: |
+  changed_when: false
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -fsSL https://get.helm.sh/helm-{{ helm.version }}-linux-amd64.tar.gz | \
     tar -xzf - --strip-components=1 linux-amd64/helm
     install -m 555 helm /usr/local/bin/helm-{{ helm.version }}

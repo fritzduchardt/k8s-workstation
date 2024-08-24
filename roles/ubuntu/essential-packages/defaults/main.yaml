@@ -1,4 +1,4 @@
-  essential_packages:
+essential_packages:
     - build-essential
     - ca-certificates
     - curl
@@ -8,6 +8,7 @@
     - htop
     - httpie
     - jq
+    - skopeo
     - software-properties-common
     - tree
     - vim

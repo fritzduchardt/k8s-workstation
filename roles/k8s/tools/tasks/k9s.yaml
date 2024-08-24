@@ -1,12 +1,14 @@
 ---
 - name: Check k9s present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/k9s-{{ k9s.version }}
   register: k9s_bin
 
 - name: Install k9s
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -fsSL https://github.com/derailed/k9s/releases/download/{{ k9s.version }}/k9s_Linux_amd64.tar.gz | \
     tar -xzf - k9s
     install -m 555 k9s /usr/local/bin/k9s-{{ k9s.version }}

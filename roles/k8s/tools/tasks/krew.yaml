@@ -1,12 +1,14 @@
 ---
 - name: Check krew present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/krew-{{ krew.version }}
   register: krew_bin
 
 - name: Install krew
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L "https://github.com/kubernetes-sigs/krew/releases/download/{{ krew.version }}/krew-linux_amd64.tar.gz" | \
     tar -xzf - krew-linux_amd64
     install -m 555 krew-linux_amd64 /usr/local/bin/krew-{{ krew.version }}
@@ -16,7 +18,8 @@
 
 - name: Install krew plugins
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
     krew install neat
     krew install ns
     krew install modify-secret

@@ -1,12 +1,14 @@
 ---
 - name: Check lazydocker present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/lazydocker-{{ versions.lazydocker }}
   register: lazydocker_bin
 
 - name: Install lazydocker
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L {{ download_urls.lazydocker }} | \
     tar -xzf - lazydocker
     install -m 555 lazydocker /usr/local/bin/lazydocker-{{ versions.lazydocker }}

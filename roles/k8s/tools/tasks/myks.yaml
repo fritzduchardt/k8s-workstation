@@ -1,12 +1,14 @@
 ---
 - name: Check myks present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/myks-{{ myks.version }}
   register: myks_bin
 
 - name: Install myks
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -sSL https://github.com/mykso/myks/releases/download/v{{ myks.version }}/myks_{{ myks.version }}_linux_amd64.tar.gz | \
     tar -xzf - myks
     install -m 555 myks /usr/local/bin/myks-{{ myks.version }}

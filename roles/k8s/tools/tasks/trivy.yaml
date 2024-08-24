@@ -1,12 +1,14 @@
 ---
 - name: Check trivy present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/trivy-v{{ trivy.version }}
   register: trivy_bin
 
 - name: Install trivy
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L https://github.com/aquasecurity/trivy/releases/download/v{{ trivy.version }}/trivy_{{ trivy.version }}_Linux-64bit.tar.gz | \
     tar -xzf - trivy
     install -m 555 trivy /usr/local/bin/trivy-v{{ trivy.version }}

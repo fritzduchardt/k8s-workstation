@@ -1,12 +1,14 @@
 ---
 - name: Check yq present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/yq-{{ versions.yq }}
   register: yq_bin
 
 - name: Install yq
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -sSL {{ download_urls.yq }} | \
     tar -xzf - --wildcards "./yq_linux_*"
     install -m 555 ./yq_linux_* /usr/local/bin/yq-{{ versions.yq }}

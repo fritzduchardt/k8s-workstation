@@ -1,12 +1,13 @@
 ---
 - name: Check kubectl present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/kubectl-{{ kubectl.version }}
   register: kubectl_bin
 
 - name: Install kubectl
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
     curl -LO "https://dl.k8s.io/release/{{ kubectl.version }}/bin/linux/amd64/kubectl"
     install -m 555 kubectl /usr/local/bin/kubectl-{{ kubectl.version }}
     ln -sf /usr/local/bin/kubectl-{{ kubectl.version }} /usr/local/bin/kubectl

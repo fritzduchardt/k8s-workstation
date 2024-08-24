@@ -1,19 +1,19 @@
 ---
 - name: Check user present
-  stat:
+  ansible.builtin.stat:
     path: /home/{{ user.name }}
   register: user_dir
 
 - name: Create User Group
   become: true
-  group:
+  ansible.builtin.group:
     name: "{{ user.group | default(user.name) }}"
     system: "{{ user.system | default(omit) }}"
   when: not user_dir.stat.exists
 
 - name: Create User
   become: true
-  user:
+  ansible.builtin.user:
     comment: "{{ user.comment | default(omit) }}"
     create_home: "{{ user.create_home | default(omit) }}"
     group: "{{ user.group | default(user.name) }}"
@@ -24,9 +24,9 @@
     system: "{{ user.system | default(omit) }}"
   when: not user_dir.stat.exists
 
-- name: Make user a sudoer
+- name: Make user a sudo
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/sudoers
     state: present
     regexp: '^%{{ user.name }}'

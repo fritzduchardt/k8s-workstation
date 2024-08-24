@@ -1,12 +1,14 @@
 ---
 - name: Check rg present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/rg-{{ versions.rg }}
   register: rg_bin
 
 - name: Install ripgrep
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L {{ download_urls.rg }} | \
     tar -xzf - --strip-components=1 --wildcards "*/rg"
     install -m 555 rg /usr/local/bin/rg-{{ versions.rg }}

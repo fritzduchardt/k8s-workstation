@@ -1,19 +1,19 @@
 ---
 - name: Check goenv present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/go
   register: goenv_dir
 
 - name: Git checkout goenv
-  git:
+  ansible.builtin.git:
     repo: 'https://github.com/go-nv/goenv.git'
     dest: ~/.goenv
     version: master
-    update: yes
+    update: true
   when: not goenv_dir.stat.exists
 
 - name: Install golang
   become: true
-  shell: |
-    goenv install {{ golang.version }}.
+  changed_when: true
+  ansible.builtin.command: goenv install {{ golang.version }}.
   when: not golang_dir.stat.exists

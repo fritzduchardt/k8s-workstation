@@ -1,12 +1,14 @@
 ---
 - name: Check mcfly present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/mcfly-{{ versions.mcfly }}
   register: mcfly_bin
 
 - name: Install mcfly
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L {{ download_urls.mcfly }} | \ 
     tar -xzf - mcfly
     install -m 555 mcfly /usr/local/bin/mcfly-{{ versions.mcfly }}

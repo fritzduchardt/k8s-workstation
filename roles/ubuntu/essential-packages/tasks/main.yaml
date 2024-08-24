@@ -1,18 +1,18 @@
 ---
 - name: Install essential packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name: '{{ item }}'
     state: latest
-    update_cache: yes
+    update_cache: true
   with_items: '{{ essential_packages }}'
 
 - name: Set VIM as default editor
   become: true
-  shell: |
-    update-alternatives --set editor /usr/bin/vim.basic
+  changed_when: true
+  ansible.builtin.command: update-alternatives --set editor /usr/bin/vim.basic
 
 - name: Set zsh as default shell
   become: true
-  shell: |
-    chsh -s $(which zsh)
+  changed_when: true
+  ansible.builtin.command: chsh -s $(which zsh)

@@ -1,12 +1,13 @@
 ---
 - name: Check vendir present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/vendir-{{ vendir.version }}
   register: vendir_bin
 
 - name: Install vendir
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
     curl -LO https://github.com/carvel-dev/vendir/releases/download/{{ vendir.version }}/vendir-linux-amd64
     install -m 555 vendir-linux-amd64 /usr/local/bin/vendir-{{ vendir.version }}
     ln -f -s /usr/local/bin/vendir-{{ vendir.version }} /usr/local/bin/vendir

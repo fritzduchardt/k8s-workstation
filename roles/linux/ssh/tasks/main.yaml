@@ -1,12 +1,13 @@
 - name: Check ssh dir present
-  stat:
+  ansible.builtin.stat:
     path: /home/{{ user.name }}/.ssh
   register: ssh_dir
 
 - name: Copy ssh public key
   become: true
   become_user: "{{ user.name }}"
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
     mkdir ~/.ssh
     if [ ! -f ~/.ssh/authorized_keys ]; then
       touch ~/.ssh/authorized_keys
@@ -18,22 +19,22 @@
 
 - name: Enable ssh public key authentication
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
     regexp: '#PubkeyAuthentication yes'
     line: 'PubkeyAuthentication yes'
   when: not ssh_dir.stat.exists
 
 - name: Add or update AllowUsers directive
-  become: yes
-  lineinfile:
+  become: true
+  ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
     regexp: 'AllowUsers .*'
     line: "AllowUsers {{ user.name }} root"
 
 - name: Permit root login
-  become: yes
-  lineinfile:
+  become: true
+  ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
     regexp: '#PermitRootLogin.*'
     line: "PermitRootLogin yes"

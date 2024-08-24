@@ -1,8 +1,0 @@
-- name: Install essential packages
-  hosts: "*"
-  roles:
-    - role: fedora/zsh
-    - role: fedora/essential-packages
-    - role: fedora/network-packages
-    - role: fedora/docker
-

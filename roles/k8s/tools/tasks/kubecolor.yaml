@@ -1,12 +1,14 @@
 ---
 - name: Check kubecolor present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/kubecolor-{{ kubecolor.version }}
   register: kubecolor_bin
 
 - name: Install kubecolor
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L "https://github.com/kubecolor/kubecolor/releases/download/v{{ kubecolor.version }}/kubecolor_{{ kubecolor.version }}_linux_amd64.tar.gz" | \
     tar -xzf - kubecolor
     install -m 555 kubecolor /usr/local/bin/kubecolor-{{ kubecolor.version }}

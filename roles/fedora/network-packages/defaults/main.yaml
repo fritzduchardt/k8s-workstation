@@ -1,9 +1,0 @@
-network_packages:
-  - bmon
-  - dnsutils
-  - net-tools
-  - netcat
-  - nmap
-  - openssl
-  - traceroute
-

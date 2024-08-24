@@ -1,12 +1,14 @@
 ---
 - name: Check lazygit present
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/lazygit-{{ versions.lazygit }}
   register: lazygit_bin
 
 - name: Install lazygit
   become: true
-  shell: |
+  changed_when: true
+  ansible.builtin.shell: |
+    set -eo pipefail
     curl -L {{ download_urls.lazygit }} | \
     tar -xzf - lazygit
     install -m 555 lazygit /usr/local/bin/lazygit-{{ versions.lazygit }}
