@@ -18,7 +18,7 @@
 
 - name: Install krew plugins
   become: true
-  changed_when: true
+  changed_when: false
   ansible.builtin.shell: |
     krew install neat
     krew install ns

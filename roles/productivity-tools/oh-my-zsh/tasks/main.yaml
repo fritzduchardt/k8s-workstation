@@ -2,21 +2,21 @@
 - name: Git checkout OMZ
   become: true
   become_user: "{{ user.name }}"
-  git:
+  ansible.builtin.git:
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
     dest: ~/projects/github/ohmyzsh
-    update: yes
+    update: true
 
 - name: Git checkout FMZ
   become: true
   become_user: "{{ user.name }}"
-  git:
+  ansible.builtin.git:
     repo: 'https://github.com/fritzduchardt/fritzmyzsh.git'
     dest: ~/projects/github/fritzmyzsh
-    update: yes
+    update: true
 
 - name: Copy zshrc
-  copy:
+  ansible.builtin.copy:
     src: ../../../../templates/zshrc.sh
     dest: ~/.zshrc
     owner: "{{ user.name }}"

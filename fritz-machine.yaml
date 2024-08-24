@@ -1,13 +1,19 @@
 - name: Set up the K8s workstations
   hosts: "*"
   roles:
-    - role: linux/tools
-      tags: linux
     - role: k8s/tools
       tags: k8s
+    - role: k8s/k8s-admin-shell
+      tags: k8s
+    - role: k8s/k8s-scripts
+      tags: k8s
     - role: productivity-tools/tools
-      tags: tools
-    - role: dev-tools
-      tags: dev
-    - role: s3
-      tags: s3
+      tags: productivity
+    - role: productivity-tools/linux-tools
+      tags: productivity
+    - role: productivity-tools/oh-my-zsh
+      tags: productivity
+    - role: ubuntu/essential-packages
+      tags: ubuntu
+    - role: ubuntu/network-packages
+      tags: ubuntu

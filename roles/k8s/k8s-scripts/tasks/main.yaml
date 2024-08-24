@@ -1,11 +1,4 @@
 ---
-- name: Check k8s-tools present
-  become: true
-  become_user: "{{ user.name }}"
-  ansible.builtin.stat:
-    path: ~/projects/github/k8s-tools
-  register: k8s_tools
-
 - name: Git checkout
   become: true
   become_user: "{{ user.name }}"
@@ -14,11 +7,3 @@
     dest: ~/projects/github/k8s-tools
     version: master
     update: true
-  when: not k8s_tools.stat.exists
-
-- name: Install aliases
-  ansible.builtin.command: ~/projects/github/linux-tools/zsh/add_source.sh ~/projects/github/k8s-tools/config_rc.sh k8s-tools
-  changed_when: true
-  become: true
-  become_user: "{{ user.name }}"
-  when: not k8s_tools.stat.exists

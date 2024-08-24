@@ -7,5 +7,6 @@
 profile: null
 
 skip_list:
+  - latest[git]
   - package-latest
   - command-instead-of-module

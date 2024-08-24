@@ -2,6 +2,11 @@
 - name: Check goenv present
   ansible.builtin.stat:
     path: /usr/local/go
+  register: golang_dir
+
+- name: Check goenv present
+  ansible.builtin.stat:
+    path: ~/.goenv
   register: goenv_dir
 
 - name: Git checkout goenv
