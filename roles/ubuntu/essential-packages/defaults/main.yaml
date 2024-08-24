@@ -8,9 +8,7 @@ essential_packages:
     - htop
     - httpie
     - jq
-    - skopeo
     - software-properties-common
     - tree
     - vim
     - wget
-    - zsh
