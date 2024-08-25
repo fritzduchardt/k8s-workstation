@@ -1,6 +1,6 @@
 versions:
   bat: v0.24.0
-  fd: v9.0.0
+  fd: v10.2.0
   fzf: 0.50.0
   lazydocker: 0.23.1
   lazygit: 0.41.0

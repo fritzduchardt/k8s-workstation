@@ -1,2 +1,0 @@
-# created by 'IntelliJ Ansible Lint Plugin'
-roles/k8s/tools/tasks/argocd.yaml command-instead-of-module

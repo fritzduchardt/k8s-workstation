@@ -7,11 +7,13 @@
 - name: Install helm
   become: true
   changed_when: false
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -fsSL https://get.helm.sh/helm-{{ helm.version }}-linux-amd64.tar.gz | \
-    tar -xzf - --strip-components=1 linux-amd64/helm
-    install -m 555 helm /usr/local/bin/helm-{{ helm.version }}
-    ln -sf /usr/local/bin/helm-{{ helm.version }} /usr/local/bin/helm
-    rm helm
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -fsSL https://get.helm.sh/helm-{{ helm.version }}-linux-amd64.tar.gz | \
+      tar -xzf - --strip-components=1 linux-amd64/helm
+      install -m 555 helm /usr/local/bin/helm-{{ helm.version }}
+      ln -sf /usr/local/bin/helm-{{ helm.version }} /usr/local/bin/helm
+      rm helm
   when: not helm_bin.stat.exists

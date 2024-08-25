@@ -7,9 +7,11 @@
 - name: Install kubectl
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    curl -LO "https://dl.k8s.io/release/{{ kubectl.version }}/bin/linux/amd64/kubectl"
-    install -m 555 kubectl /usr/local/bin/kubectl-{{ kubectl.version }}
-    ln -sf /usr/local/bin/kubectl-{{ kubectl.version }} /usr/local/bin/kubectl
-    rm kubectl
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -LO "https://dl.k8s.io/release/{{ kubectl.version }}/bin/linux/amd64/kubectl"
+      install -m 555 kubectl /usr/local/bin/kubectl-{{ kubectl.version }}
+      ln -sf /usr/local/bin/kubectl-{{ kubectl.version }} /usr/local/bin/kubectl
+      rm kubectl
   when: not kubectl_bin.stat.exists

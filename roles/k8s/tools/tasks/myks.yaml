@@ -7,11 +7,13 @@
 - name: Install myks
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -sSL https://github.com/mykso/myks/releases/download/v{{ myks.version }}/myks_{{ myks.version }}_linux_amd64.tar.gz | \
-    tar -xzf - myks
-    install -m 555 myks /usr/local/bin/myks-{{ myks.version }}
-    ln -sf /usr/local/bin/myks-{{ myks.version }} /usr/local/bin/myks
-    rm myks
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -sSL https://github.com/mykso/myks/releases/download/v{{ myks.version }}/myks_{{ myks.version }}_linux_amd64.tar.gz | \
+      tar -xzf - myks
+      install -m 555 myks /usr/local/bin/myks-{{ myks.version }}
+      ln -sf /usr/local/bin/myks-{{ myks.version }} /usr/local/bin/myks
+      rm myks
   when: not myks_bin.stat.exists

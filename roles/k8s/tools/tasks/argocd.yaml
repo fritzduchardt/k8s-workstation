@@ -7,9 +7,11 @@
 - name: Install argocd
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/download/{{ argocd.version }}/argocd-linux-amd64
-    install -m 555 argocd-linux-amd64 /usr/local/bin/argocd-{{ argocd.version }}
-    ln -sf /usr/local/bin/argocd-{{ argocd.version }} /usr/local/bin/argocd
-    rm argocd-linux-amd64
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/download/{{ argocd.version }}/argocd-linux-amd64
+      install -m 555 argocd-linux-amd64 /usr/local/bin/argocd-{{ argocd.version }}
+      ln -sf /usr/local/bin/argocd-{{ argocd.version }} /usr/local/bin/argocd
+      rm argocd-linux-amd64
   when: not argocd_bin.stat.exists

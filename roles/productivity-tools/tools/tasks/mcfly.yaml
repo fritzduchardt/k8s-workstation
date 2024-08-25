@@ -7,11 +7,13 @@
 - name: Install mcfly
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L {{ download_urls.mcfly }} | \ 
-    tar -xzf - mcfly
-    install -m 555 mcfly /usr/local/bin/mcfly-{{ versions.mcfly }}
-    ln -sf /usr/local/bin/mcfly-{{ versions.mcfly }} /usr/local/bin/mcfly
-    rm mcfly
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.mcfly }} | \ 
+      tar -xzf - mcfly
+      install -m 555 mcfly /usr/local/bin/mcfly-{{ versions.mcfly }}
+      ln -sf /usr/local/bin/mcfly-{{ versions.mcfly }} /usr/local/bin/mcfly
+      rm mcfly
   when: not mcfly_bin.stat.exists

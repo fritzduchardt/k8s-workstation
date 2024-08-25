@@ -7,11 +7,13 @@
 - name: Install zoxide
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L {{ download_urls.zoxide }} | \ 
-    tar -xzf - zoxide
-    install -m 555 zoxide /usr/local/bin/zoxide-{{ versions.zoxide }}
-    ln -sf /usr/local/bin/zoxide-{{ versions.zoxide }} /usr/local/bin/zoxide
-    rm zoxide
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.zoxide }} | \ 
+      tar -xzf - zoxide
+      install -m 555 zoxide /usr/local/bin/zoxide-{{ versions.zoxide }}
+      ln -sf /usr/local/bin/zoxide-{{ versions.zoxide }} /usr/local/bin/zoxide
+      rm zoxide
   when: not zoxide_bin.stat.exists

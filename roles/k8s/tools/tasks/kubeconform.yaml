@@ -7,11 +7,13 @@
 - name: Install kubeconform
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -sSL https://github.com/yannh/kubeconform/releases/download/{{ kubeconform.version }}/kubeconform-linux-amd64.tar.gz | \
-    tar -xzf - kubeconform
-    install -m 555 kubeconform /usr/local/bin/kubeconform-{{ kubeconform.version }}
-    ln -sf /usr/local/bin/kubeconform-{{ kubeconform.version }} /usr/local/bin/kubeconform
-    rm kubeconform
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -sSL https://github.com/yannh/kubeconform/releases/download/{{ kubeconform.version }}/kubeconform-linux-amd64.tar.gz | \
+      tar -xzf - kubeconform
+      install -m 555 kubeconform /usr/local/bin/kubeconform-{{ kubeconform.version }}
+      ln -sf /usr/local/bin/kubeconform-{{ kubeconform.version }} /usr/local/bin/kubeconform
+      rm kubeconform
   when: not kubeconform_bin.stat.exists

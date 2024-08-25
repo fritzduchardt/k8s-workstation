@@ -7,9 +7,11 @@
 - name: Install kapp
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    curl -LO https://github.com/carvel-dev/kapp/releases/download/{{ kapp.version }}/kapp-linux-amd64
-    install -m 555 kapp-linux-amd64 /usr/local/bin/kapp-{{ kapp.version }}
-    ln -sf /usr/local/bin/kapp-{{ kapp.version }} /usr/local/bin/kapp
-    rm kapp-linux-amd64
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -LO https://github.com/carvel-dev/kapp/releases/download/{{ kapp.version }}/kapp-linux-amd64
+      install -m 555 kapp-linux-amd64 /usr/local/bin/kapp-{{ kapp.version }}
+      ln -sf /usr/local/bin/kapp-{{ kapp.version }} /usr/local/bin/kapp
+      rm kapp-linux-amd64
   when: not kapp_bin.stat.exists

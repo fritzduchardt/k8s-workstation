@@ -7,11 +7,13 @@
 - name: Install fzf
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L {{ download_urls.fzf }} | \
-    tar -xzf - fzf
-    install -m 555 fzf /usr/local/bin/fzf-{{ versions.fzf }}
-    ln -sf /usr/local/bin/fzf-{{ versions.fzf }} /usr/local/bin/fzf
-    rm fzf
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.fzf }} | \
+      tar -xzf - fzf
+      install -m 555 fzf /usr/local/bin/fzf-{{ versions.fzf }}
+      ln -sf /usr/local/bin/fzf-{{ versions.fzf }} /usr/local/bin/fzf
+      rm fzf
   when: not fzf_bin.stat.exists

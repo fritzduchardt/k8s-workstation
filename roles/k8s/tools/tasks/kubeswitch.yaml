@@ -7,14 +7,16 @@
 - name: Install kubeswitch binary
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    curl -LO https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ kubeswitch.version }}/switcher_linux_amd64
-    install -m 555 switcher_linux_amd64 /usr/local/bin/kubeswitch-{{ kubeswitch.version }}
-    ln -sf /usr/local/bin/kubeswitch-{{ kubeswitch.version }} /usr/local/bin/switcher
-    rm switcher_linux_amd64
-    curl -LO https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ kubeswitch.version }}/switch.sh
-    mkdir -p /home/fritz/projects/github/fritzmyzsh/plugins/kubeswitch
-    mv switch.sh /home/fritz/projects/github/fritzmyzsh/plugins/kubeswitch
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -LO https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ kubeswitch.version }}/switcher_linux_amd64
+      install -m 555 switcher_linux_amd64 /usr/local/bin/kubeswitch-{{ kubeswitch.version }}
+      ln -sf /usr/local/bin/kubeswitch-{{ kubeswitch.version }} /usr/local/bin/switcher
+      rm switcher_linux_amd64
+      curl -LO https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ kubeswitch.version }}/switch.sh
+      mkdir -p /home/fritz/projects/github/fritzmyzsh/plugins/kubeswitch
+      mv switch.sh /home/fritz/projects/github/fritzmyzsh/plugins/kubeswitch
   when: not kubeswitch_bin.stat.exists
 
 - name: Check kubeswitch shell config present
@@ -24,8 +26,10 @@
 
 - name: Install kubeswitch shell config
   changed_when: true
-  ansible.builtin.shell: |
-    curl -LO https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ kubeswitch.version }}/switch.sh
-    mkdir -p ~/projects/github/fritzmyzsh/plugins/kubeswitch
-    mv switch.sh ~/projects/github/fritzmyzsh/plugins/kubeswitch
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -LO https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ kubeswitch.version }}/switch.sh
+      mkdir -p ~/projects/github/fritzmyzsh/plugins/kubeswitch
+      mv switch.sh ~/projects/github/fritzmyzsh/plugins/kubeswitch
   when: not kubeswitch_sh.stat.exists

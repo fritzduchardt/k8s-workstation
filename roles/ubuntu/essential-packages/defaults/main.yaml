@@ -12,3 +12,4 @@ essential_packages:
     - tree
     - vim
     - wget
+    - zsh

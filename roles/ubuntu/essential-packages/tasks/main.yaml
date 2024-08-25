@@ -9,10 +9,12 @@
 
 - name: Set VIM as default editor
   become: true
-  changed_when: true
+  changed_when: false
   ansible.builtin.command: update-alternatives --set editor /usr/bin/vim.basic
 
 - name: Set zsh as default shell
   become: true
-  changed_when: true
-  ansible.builtin.command: chsh -s $(which zsh)
+  changed_when: false
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: chsh -s $(which zsh)

@@ -7,11 +7,13 @@
 - name: Install lazydocker
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L {{ download_urls.lazydocker }} | \
-    tar -xzf - lazydocker
-    install -m 555 lazydocker /usr/local/bin/lazydocker-{{ versions.lazydocker }}
-    ln -sf /usr/local/bin/lazydocker-{{ versions.lazydocker }} /usr/local/bin/lazydocker
-    rm lazydocker
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.lazydocker }} | \
+      tar -xzf - lazydocker
+      install -m 555 lazydocker /usr/local/bin/lazydocker-{{ versions.lazydocker }}
+      ln -sf /usr/local/bin/lazydocker-{{ versions.lazydocker }} /usr/local/bin/lazydocker
+      rm lazydocker
   when: not lazydocker_bin.stat.exists

@@ -7,11 +7,13 @@
 - name: Install yq
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -sSL {{ download_urls.yq }} | \
-    tar -xzf - --wildcards "./yq_linux_*"
-    install -m 555 ./yq_linux_* /usr/local/bin/yq-{{ versions.yq }}
-    ln -sf /usr/local/bin/yq-{{ versions.yq }} /usr/local/bin/yq
-    rm -rf ./yq_linux_*
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -sSL {{ download_urls.yq }} | \
+      tar -xzf - --wildcards "./yq_linux_*"
+      install -m 555 ./yq_linux_* /usr/local/bin/yq-{{ versions.yq }}
+      ln -sf /usr/local/bin/yq-{{ versions.yq }} /usr/local/bin/yq
+      rm -rf ./yq_linux_*
   when: not yq_bin.stat.exists

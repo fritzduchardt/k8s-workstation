@@ -7,11 +7,13 @@
 - name: Install kubecolor
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L "https://github.com/kubecolor/kubecolor/releases/download/v{{ kubecolor.version }}/kubecolor_{{ kubecolor.version }}_linux_amd64.tar.gz" | \
-    tar -xzf - kubecolor
-    install -m 555 kubecolor /usr/local/bin/kubecolor-{{ kubecolor.version }}
-    ln -sf /usr/local/bin/kubecolor-{{ kubecolor.version }} /usr/local/bin/kubecolor
-    rm kubecolor
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L "https://github.com/kubecolor/kubecolor/releases/download/v{{ kubecolor.version }}/kubecolor_{{ kubecolor.version }}_linux_amd64.tar.gz" | \
+      tar -xzf - kubecolor
+      install -m 555 kubecolor /usr/local/bin/kubecolor-{{ kubecolor.version }}
+      ln -sf /usr/local/bin/kubecolor-{{ kubecolor.version }} /usr/local/bin/kubecolor
+      rm kubecolor
   when: not kubecolor_bin.stat.exists

@@ -7,11 +7,13 @@
 - name: Install lazygit
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L {{ download_urls.lazygit }} | \
-    tar -xzf - lazygit
-    install -m 555 lazygit /usr/local/bin/lazygit-{{ versions.lazygit }}
-    ln -sf /usr/local/bin/lazygit-{{ versions.lazygit }} /usr/local/bin/lazygit
-    rm lazygit
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.lazygit }} | \
+      tar -xzf - lazygit
+      install -m 555 lazygit /usr/local/bin/lazygit-{{ versions.lazygit }}
+      ln -sf /usr/local/bin/lazygit-{{ versions.lazygit }} /usr/local/bin/lazygit
+      rm lazygit
   when: not lazygit_bin.stat.exists

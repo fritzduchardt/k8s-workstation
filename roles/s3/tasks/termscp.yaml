@@ -7,11 +7,13 @@
 - name: Install termscp
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L https://github.com/veeso/termscp/releases/download/{{ termscp.version }}/termscp-{{ termscp.version }}-x86_64-unknown-linux-gnu.tar.gz | \
-    tar -xzf - termscp
-    install -m 555 termscp /usr/local/bin/termscp-{{ termscp.version }}
-    ln -sf /usr/local/bin/termscp-{{ termscp.version }} /usr/local/bin/termscp
-    rm termscp
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L https://github.com/veeso/termscp/releases/download/{{ termscp.version }}/termscp-{{ termscp.version }}-x86_64-unknown-linux-gnu.tar.gz | \
+      tar -xzf - termscp
+      install -m 555 termscp /usr/local/bin/termscp-{{ termscp.version }}
+      ln -sf /usr/local/bin/termscp-{{ termscp.version }} /usr/local/bin/termscp
+      rm termscp
   when: not termscp_bin.stat.exists

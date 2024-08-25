@@ -7,11 +7,13 @@
 - name: Install k9s
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -fsSL https://github.com/derailed/k9s/releases/download/{{ k9s.version }}/k9s_Linux_amd64.tar.gz | \
-    tar -xzf - k9s
-    install -m 555 k9s /usr/local/bin/k9s-{{ k9s.version }}
-    ln -sf /usr/local/bin/k9s-{{ k9s.version }} /usr/local/bin/k9s
-    rm k9s
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -fsSL https://github.com/derailed/k9s/releases/download/{{ k9s.version }}/k9s_Linux_amd64.tar.gz | \
+      tar -xzf - k9s
+      install -m 555 k9s /usr/local/bin/k9s-{{ k9s.version }}
+      ln -sf /usr/local/bin/k9s-{{ k9s.version }} /usr/local/bin/k9s
+      rm k9s
   when: not k9s_bin.stat.exists

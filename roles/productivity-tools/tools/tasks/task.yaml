@@ -7,11 +7,13 @@
 - name: Install task
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L {{ download_urls.task }} | \ 
-    tar -xzf - task
-    install -m 555 task /usr/local/bin/task-{{ versions.task }}
-    ln -sf /usr/local/bin/task-{{ versions.task }} /usr/local/bin/task
-    rm task
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.task }} | \ 
+      tar -xzf - task
+      install -m 555 task /usr/local/bin/task-{{ versions.task }}
+      ln -sf /usr/local/bin/task-{{ versions.task }} /usr/local/bin/task
+      rm task
   when: not task_bin.stat.exists

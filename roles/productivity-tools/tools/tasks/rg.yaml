@@ -7,11 +7,13 @@
 - name: Install ripgrep
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L {{ download_urls.rg }} | \
-    tar -xzf - --strip-components=1 --wildcards "*/rg"
-    install -m 555 rg /usr/local/bin/rg-{{ versions.rg }}
-    ln -sf /usr/local/bin/rg-{{ versions.rg }} /usr/local/bin/rg
-    rm rg
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.rg }} | \
+      tar -xzf - --strip-components=1 --wildcards "*/rg"
+      install -m 555 rg /usr/local/bin/rg-{{ versions.rg }}
+      ln -sf /usr/local/bin/rg-{{ versions.rg }} /usr/local/bin/rg
+      rm rg
   when: not rg_bin.stat.exists

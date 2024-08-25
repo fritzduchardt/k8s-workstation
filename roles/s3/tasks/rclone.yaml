@@ -7,11 +7,13 @@
 - name: Install rclone
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    curl -LO https://github.com/rclone/rclone/releases/download/{{ rclone.version }}/rclone-{{ rclone.version }}-linux-386.zip
-    unzip rclone-{{ rclone.version }}-linux-386.zip
-    install -m 555 rclone-{{ rclone.version }}-linux-386/rclone /usr/local/bin/rclone-{{ rclone.version }}
-    ln -sf /usr/local/bin/rclone-{{ rclone.version }} /usr/local/bin/rclone
-    rm -rf clone-{{ rclone.version }}-linux-386
-    rm rclone-{{ rclone.version }}-linux-386.zip
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -LO https://github.com/rclone/rclone/releases/download/{{ rclone.version }}/rclone-{{ rclone.version }}-linux-386.zip
+      unzip rclone-{{ rclone.version }}-linux-386.zip
+      install -m 555 rclone-{{ rclone.version }}-linux-386/rclone /usr/local/bin/rclone-{{ rclone.version }}
+      ln -sf /usr/local/bin/rclone-{{ rclone.version }} /usr/local/bin/rclone
+      rm -rf clone-{{ rclone.version }}-linux-386
+      rm rclone-{{ rclone.version }}-linux-386.zip
   when: not rclone_bin.stat.exists

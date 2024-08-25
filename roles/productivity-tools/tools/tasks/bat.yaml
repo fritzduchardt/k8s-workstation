@@ -7,11 +7,13 @@
 - name: Install bat
   become: true
   changed_when: true
-  ansible.builtin.shell: |
-    set -eo pipefail
-    curl -L {{ download_urls.bat }} | \
-    tar -xzf - --strip-components=1 --wildcards "*/bat"
-    install -m 555 bat /usr/local/bin/bat-{{ versions.bat }}
-    ln -sf /usr/local/bin/bat-{{ versions.bat }} /usr/local/bin/bat
-    rm bat
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.bat }} | \
+      tar -xzf - --strip-components=1 --wildcards "*/bat"
+      install -m 555 bat /usr/local/bin/bat-{{ versions.bat }}
+      ln -sf /usr/local/bin/bat-{{ versions.bat }} /usr/local/bin/bat
+      rm bat
   when: not bat_bin.stat.exists
