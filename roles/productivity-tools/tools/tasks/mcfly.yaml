@@ -16,4 +16,4 @@
       install -m 555 mcfly /usr/local/bin/mcfly-{{ versions.mcfly }}
       ln -sf /usr/local/bin/mcfly-{{ versions.mcfly }} /usr/local/bin/mcfly
       rm mcfly
-  when: not mcfly_bin.stat.exists
+  when: mcfly_enabled and not mcfly_bin.stat.exists

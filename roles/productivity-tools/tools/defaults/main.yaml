@@ -23,3 +23,5 @@ download_urls:
   ytop: https://github.com/cjbassi/ytop/releases/download/{{ versions.ytop }}/ytop-{{ versions.ytop }}-x86_64-unknown-linux-gnu.tar.gz
   zoxide: https://github.com/ajeetdsouza/zoxide/releases/download/v{{ versions.zoxide }}/zoxide-{{ versions.zoxide }}-x86_64-unknown-linux-musl.tar.gz
   task: https://github.com/go-task/task/releases/download/{{ versions.task }}/task_linux_amd64.tar.gz
+
+  mcfly_enabled: true

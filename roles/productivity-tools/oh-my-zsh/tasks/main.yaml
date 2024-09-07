@@ -14,13 +14,23 @@
     repo: 'https://github.com/fritzduchardt/fritzmyzsh.git'
     dest: ~/projects/github/fritzmyzsh
     update: true
+    force: true
+
+- name: Tweak zsh settings
+  become: true
+  become_user: "{{ user.name }}"
+  ansible.builtin.lineinfile:
+    path: ~/projects/github/fritzmyzsh/plugins/zshrc/misc.sh
+    regexp: '.*mcfly.*'
+    state: absent
+  when: not mcfly_enabled
 
 - name: Copy zshrc
-  ansible.builtin.copy:
-    src: ../../../../templates/zshrc.sh
+  become: true
+  ansible.builtin.template:
+    src: zshrc.sh.j2
     dest: ~/.zshrc
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
     mode: '0644'
-  become: true
   become_user: "{{ user.name }}"

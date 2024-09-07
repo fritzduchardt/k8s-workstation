@@ -6,6 +6,19 @@ download_urls:
   lazygit: https://github.com/jesseduffield/lazygit/releases/download/v{{ versions.lazygit }}/lazygit_{{ versions.lazygit }}_Linux_arm64.tar.gz
   mcfly: https://github.com/cantino/mcfly/releases/download/{{ versions.mcfly }}/mcfly-{{ versions.mcfly }}-arm-unknown-linux-gnueabi.tar.gz
   rg: https://github.com/BurntSushi/ripgrep/releases/download/{{ versions.rg }}/ripgrep-{{ versions.rg }}-armv7-unknown-linux-musleabihf.tar.gz
+  task: https://github.com/go-task/task/releases/download/{{ versions.task }}/task_linux_arm64.tar.gz
   yq: https://github.com/mikefarah/yq/releases/download/{{ versions.yq }}/yq_linux_arm64.tar.gz
   zoxide: https://github.com/ajeetdsouza/zoxide/releases/download/v{{ versions.zoxide }}/zoxide-{{ versions.zoxide }}-armv7-unknown-linux-musleabihf.tar.gz
-
+mcfly_enabled: false
+zsh_plugins: >
+  aliases
+  dotfiles
+  docker
+  find
+  git-slim
+  nmap
+  kind
+  sudo
+  systemd
+  zoxide
+  zshrc
