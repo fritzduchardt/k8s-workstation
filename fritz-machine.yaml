@@ -1,5 +1,6 @@
 - name: Set up the K8s workstations
   hosts: "*"
+  become: true
   roles:
     - role: k8s/tools
       tags: k8s

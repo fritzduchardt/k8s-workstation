@@ -1,0 +1,18 @@
+---
+- name: Check hadolint present
+  ansible.builtin.stat:
+    path: /usr/local/bin/hadolint-{{ versions.hadolint }}
+  register: hadolint_bin
+
+- name: Install hadolint
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L -o hadolint {{ download_urls.hadolint }}
+      install -m 555 hadolint /usr/local/bin/hadolint-{{ versions.hadolint }}
+      ln -sf /usr/local/bin/hadolint-{{ versions.hadolint }} /usr/local/bin/hadolint
+      rm hadolint
+  when: not hadolint_bin.stat.exists

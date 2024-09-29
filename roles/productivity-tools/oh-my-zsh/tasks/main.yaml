@@ -28,7 +28,7 @@
 - name: Copy zshrc
   become: true
   ansible.builtin.template:
-    src: zshrc.sh.j2
+    src: zshrc.sh
     dest: ~/.zshrc
     owner: "{{ user.name }}"
     group: "{{ user.name }}"

@@ -4,6 +4,8 @@
   ansible.builtin.include_tasks: fd.yaml
 - name: Fzf
   ansible.builtin.include_tasks: fzf.yaml
+- name: Hadolint
+  ansible.builtin.include_tasks: hadolint.yaml
 - name: Lazydocker
   ansible.builtin.include_tasks: lazydocker.yaml
 - name: Lazygit
