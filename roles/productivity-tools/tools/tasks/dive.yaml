@@ -1,0 +1,19 @@
+---
+- name: Check dive present
+  ansible.builtin.stat:
+    path: /usr/local/bin/dive-{{ versions.dive }}
+  register: dive_bin
+
+- name: Install dive
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.dive }} | \
+      tar -xzf - dive
+      install -m 555 dive /usr/local/bin/dive-{{ versions.dive }}
+      ln -sf /usr/local/bin/dive-{{ versions.dive }} /usr/local/bin/dive
+      rm dive
+  when: not dive_bin.stat.exists

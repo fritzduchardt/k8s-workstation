@@ -1,5 +1,7 @@
 - name: Bat
   ansible.builtin.include_tasks: bat.yaml
+- name: Dive
+  ansible.builtin.include_tasks: dive.yaml
 - name: Fd
   ansible.builtin.include_tasks: fd.yaml
 - name: Fzf
