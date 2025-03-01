@@ -1,4 +1,0 @@
-- name: Rclone
-  ansible.builtin.include_tasks: rclone.yaml
-- name: Termscp
-  ansible.builtin.include_tasks: termscp.yaml
