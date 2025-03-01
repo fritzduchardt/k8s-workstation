@@ -9,7 +9,7 @@
       // # renovate: datasource=github-releases depName="cjbassi/ytop"
       // ytop: 0.6.2,
       matchStrings: [
-        "#\\s+renovate:\\s+datasource=(?<datasource>github-releases)\\s+depName=\"(?<depName>\\S+)\"\\n\\s+\S+:\\s+(?<currentValue>\\S+)"
+        "#\\s+renovate:\\s+datasource=(?<datasource>github-releases)\\s+depName=\"(?<depName>\\S+)\"\\n\\s+\\S+:\\s+(?<currentValue>\\S+)"
       ]
     }
   ],
