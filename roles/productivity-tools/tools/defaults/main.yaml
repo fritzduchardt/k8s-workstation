@@ -21,7 +21,7 @@ versions:
   # renovate: datasource=github-releases depName="go-task/task"
   task: v3.34.1
   # renovate: datasource=github-releases depName="mikefarah/yq"
-  yq: v4.42.1
+  yq: v4.45.1
   # renovate: datasource=github-releases depName="ajeetdsouza/zoxide"
   zoxide: 0.9.7
   # renovate: datasource=github-releases depName="cjbassi/ytop"
