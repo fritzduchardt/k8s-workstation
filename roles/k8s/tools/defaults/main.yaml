@@ -21,7 +21,7 @@ kubectl:
   version: v1.29.0
 kubeswitch:
   # renovate: datasource=github-releases depName="danielfoehrKn/kubeswitch"
-  version: 0.9.1
+  version: 0.9.3
 kubecolor:
   # renovate: datasource=github-releases depName="kubecolor/kubecolor"
   version: 0.3.2
