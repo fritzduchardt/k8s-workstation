@@ -17,7 +17,7 @@ versions:
   # renovate: datasource=github-releases depName="cantino/mcfly"
   mcfly: v0.9.3
   # renovate: datasource=github-releases depName="BurntSushi/ripgrep"
-  rg: 14.1.0
+  rg: 14.1.1
   # renovate: datasource=github-releases depName="go-task/task"
   task: v3.41.0
   # renovate: datasource=github-releases depName="mikefarah/yq"
