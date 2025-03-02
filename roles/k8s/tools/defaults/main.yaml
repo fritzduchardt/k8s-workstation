@@ -42,4 +42,4 @@ vendir:
   version: v0.40.1
 ytt:
   # renovate: datasource=github-releases depName="carvel-dev/ytt"
-  version: v0.48.0
+  version: v0.51.1
