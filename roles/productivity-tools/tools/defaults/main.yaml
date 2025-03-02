@@ -1,7 +1,7 @@
 versions:
 #  tag: v1.122.0
   # renovate: datasource=github-releases depName="sharkdp/bat"
-  bat: v0.24.0
+  bat: v0.25.0
   # renovate: datasource=github-releases depName="wagoodman/dive"
   dive: 0.12.0
   # renovate: datasource=github-releases depName="sharkdp/fd"
