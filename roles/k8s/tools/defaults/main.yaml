@@ -3,7 +3,7 @@ argocd:
   version: v2.10.1
 helm:
   # renovate: datasource=github-releases depName="helm/helm"
-  version: v3.14.4
+  version: v3.17.1
 k9s:
   # renovate: datasource=github-releases depName="derailed/k9s"
   version: v0.32.1
