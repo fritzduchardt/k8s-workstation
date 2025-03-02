@@ -15,7 +15,7 @@ krew:
   version: v0.4.4
 kubeconform:
   # renovate: datasource=github-releases depName="yannh/kubeconform"
-  version: v0.6.4
+  version: v0.6.7
 kubectl:
   # renovate: datasource=github-releases depName="kubernetes/kubectl"
   version: v1.29.0
