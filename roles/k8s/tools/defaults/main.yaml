@@ -9,7 +9,7 @@ k9s:
   version: v0.32.1
 kapp:
   # renovate: datasource=github-releases depName="carvel-dev/kapp"
-  version: v0.61.0
+  version: v0.64.0
 krew:
   # renovate: datasource=github-releases depName="kubernetes-sigs/krew"
   version: v0.4.4
