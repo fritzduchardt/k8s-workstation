@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 ARG ANSIBLE_VERSION=9.1.2
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
