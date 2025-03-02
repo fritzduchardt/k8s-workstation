@@ -6,7 +6,7 @@ helm:
   version: v3.14.4
 k9s:
   # renovate: datasource=github-releases depName="derailed/k9s"
-  version: v0.32.1
+  version: v0.40.5
 kapp:
   # renovate: datasource=github-releases depName="carvel-dev/kapp"
   version: v0.61.0
