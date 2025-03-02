@@ -1,30 +1,45 @@
 argocd:
+  # renovate: datasource=github-releases depName="argoproj/argo-cd"
   version: v2.10.1
 helm:
+  # renovate: datasource=github-releases depName="helm/helm"
   version: v3.14.4
 k9s:
+  # renovate: datasource=github-releases depName="derailed/k9s"
   version: v0.32.1
 kapp:
+  # renovate: datasource=github-releases depName="carvel-dev/kapp"
   version: v0.61.0
 krew:
+  # renovate: datasource=github-releases depName="kubernetes-sigs/krew"
   version: v0.4.4
 kubeconform:
+  # renovate: datasource=github-releases depName="yannh/kubeconform"
   version: v0.6.4
 kubectl:
+  # renovate: datasource=github-releases depName="kubernetes/kubectl"
   version: v1.29.0
 kubeswitch:
+  # renovate: datasource=github-releases depName="danielfoehrKn/kubeswitch"
   version: 0.9.1
 kubecolor:
+  # renovate: datasource=github-releases depName="kubecolor/kubecolor"
   version: 0.3.2
 myks:
+  # renovate: datasource=github-releases depName="mykso/myks"
   version: 4.2.1
 sops:
+  # renovate: datasource=github-releases depName="getsops/sops"
   version: v3.8.1
 stern:
+  # renovate: datasource=github-releases depName="stern/stern"
   version: 1.28.0
 trivy:
+  # renovate: datasource=github-releases depName="aquasecurity/trivy"
   version: 0.51.2
 vendir:
+  # renovate: datasource=github-releases depName="carvel-dev/vendir"
   version: v0.40.1
 ytt:
+  # renovate: datasource=github-releases depName="carvel-dev/ytt"
   version: v0.48.0

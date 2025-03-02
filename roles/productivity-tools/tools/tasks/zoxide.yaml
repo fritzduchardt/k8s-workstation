@@ -10,10 +10,10 @@
   ansible.builtin.shell:
     executable: /usr/bin/bash
     cmd: |
-      set -eo pipefail
-      curl -L {{ download_urls.zoxide }} | \ 
-      tar -xzf - zoxide
+      curl -o zoxide.tar.gz -L {{ download_urls.zoxide }}
+      tar -xzf zoxide.tar.gz
       install -m 555 zoxide /usr/local/bin/zoxide-{{ versions.zoxide }}
       ln -sf /usr/local/bin/zoxide-{{ versions.zoxide }} /usr/local/bin/zoxide
       rm zoxide
+      rm zoxide.tar.gz
   when: not zoxide_bin.stat.exists

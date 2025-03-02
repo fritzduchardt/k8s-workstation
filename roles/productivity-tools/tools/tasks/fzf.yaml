@@ -10,10 +10,10 @@
   ansible.builtin.shell:
     executable: /usr/bin/bash
     cmd: |
-      set -eo pipefail
-      curl -L {{ download_urls.fzf }} | \
-      tar -xzf - fzf
+      curl -o fzf.tar.gz -L {{ download_urls.fzf }}
+      tar -xzf fzf.tar.gz fzf
       install -m 555 fzf /usr/local/bin/fzf-{{ versions.fzf }}
       ln -sf /usr/local/bin/fzf-{{ versions.fzf }} /usr/local/bin/fzf
       rm fzf
-  when: not fzf_bin.stat.exists
+      rm fzf.tar.gz
+#  when: not fzf_bin.stat.exists

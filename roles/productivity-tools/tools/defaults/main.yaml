@@ -31,7 +31,7 @@ download_urls:
   bat: https://github.com/sharkdp/bat/releases/download/{{ versions.bat }}/bat-{{ versions.bat }}-i686-unknown-linux-musl.tar.gz
   dive: https://github.com/wagoodman/dive/releases/download/v{{ versions.dive }}/dive_{{ versions.dive }}_linux_amd64.tar.gz
   fd: https://github.com/sharkdp/fd/releases/download/{{ versions.fd }}/fd-{{ versions.fd }}-x86_64-unknown-linux-musl.tar.gz
-  fzf: https://github.com/junegunn/fzf/releases/download/{{ versions.fzf }}/fzf-{{ versions.fzf }}-linux_amd64.tar.gz
+  fzf: https://github.com/junegunn/fzf/releases/download/{{ versions.fzf }}/fzf-{{ versions.fzf | regex_replace('^v', '') }}-linux_amd64.tar.gz
   hadolint: https://github.com/hadolint/hadolint/releases/download/{{ versions.hadolint }}/hadolint-Linux-x86_64
   lazydocker: https://github.com/jesseduffield/lazydocker/releases/download/v{{ versions.lazydocker }}/lazydocker_{{ versions.lazydocker }}_Linux_x86_64.tar.gz
   lazygit: https://github.com/jesseduffield/lazygit/releases/download/v{{ versions.lazygit }}/lazygit_{{ versions.lazygit }}_Linux_x86_64.tar.gz

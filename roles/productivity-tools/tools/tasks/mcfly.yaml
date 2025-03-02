@@ -10,10 +10,10 @@
   ansible.builtin.shell:
     executable: /usr/bin/bash
     cmd: |
-      set -eo pipefail
-      curl -L {{ download_urls.mcfly }} | \ 
-      tar -xzf - mcfly
+      curl -o mcfly.tar.gz -L {{ download_urls.mcfly }}
+      tar -xzf mcfly.tar.gz mcfly
       install -m 555 mcfly /usr/local/bin/mcfly-{{ versions.mcfly }}
       ln -sf /usr/local/bin/mcfly-{{ versions.mcfly }} /usr/local/bin/mcfly
       rm mcfly
+      rm mcfly.tar.gz
   when: mcfly_enabled and not mcfly_bin.stat.exists
