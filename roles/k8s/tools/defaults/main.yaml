@@ -27,7 +27,7 @@ kubecolor:
   version: 0.3.2
 myks:
   # renovate: datasource=github-releases depName="mykso/myks"
-  version: 4.2.1
+  version: 4.4.2
 sops:
   # renovate: datasource=github-releases depName="getsops/sops"
   version: v3.8.1
