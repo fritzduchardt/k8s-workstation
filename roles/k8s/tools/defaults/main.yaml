@@ -12,7 +12,7 @@ kapp:
   version: v0.64.0
 krew:
   # renovate: datasource=github-releases depName="kubernetes-sigs/krew"
-  version: v0.4.4
+  version: v0.4.5
 kubeconform:
   # renovate: datasource=github-releases depName="yannh/kubeconform"
   version: v0.6.7
