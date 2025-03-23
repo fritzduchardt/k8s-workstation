@@ -1,6 +1,6 @@
 argocd:
   # renovate: datasource=github-releases depName="argoproj/argo-cd"
-  version: v2.14.7
+  version: v2.14.5
 helm:
   # renovate: datasource=github-releases depName="helm/helm"
   version: v3.17.2
