@@ -1,0 +1,17 @@
+---
+- name: Check ollama present
+  ansible.builtin.stat:
+    path: /usr/local/bin/ollama-{{ ollama.version }}
+  register: ollama_bin
+
+- name: Install ollama
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -sSL -O  https://github.com/ollama/ollama/releases/download/{{ ollama.version }}/ollama-linux-amd64.tgz
+      mkdir -f ~/ollama
+      tar -xzf ollama-linux-amd64.tgz -C ~/ollama
+      rm ollama-linux-amd64.tgz
+  when: not ollama_bin.stat.exists

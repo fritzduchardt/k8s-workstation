@@ -1,0 +1,3 @@
+ollama:
+  # renovate: datasource=github-releases depName="ollama/ollama"
+  version: v0.6.1
