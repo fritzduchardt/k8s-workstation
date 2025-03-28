@@ -36,7 +36,7 @@ trivy:
   version: 0.60.0
 vendir:
   # renovate: datasource=github-releases depName="carvel-dev/vendir"
-  version: v0.43.0
+  version: v0.43.1
 ytt:
   # renovate: datasource=github-releases depName="carvel-dev/ytt"
   version: v0.51.1
