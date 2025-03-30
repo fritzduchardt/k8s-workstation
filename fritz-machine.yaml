@@ -4,16 +4,16 @@
   roles:
     - role: k8s/tools
       tags: k8s
-    - role: k8s/k8s-admin-shell
-      tags: k8s
-    - role: k8s/k8s-scripts
-      tags: k8s
+#    - role: k8s/k8s-admin-shell
+#      tags: git
+#    - role: k8s/k8s-scripts
+#      tags: git
+#    - role: productivity-tools/linux-tools
+#      tags: git
     - role: productivity-tools/tools
       tags: productivity
-    - role: productivity-tools/linux-tools
-      tags: productivity
     - role: productivity-tools/oh-my-zsh
-      tags: productivity
+      tags: zsh
     - role: ubuntu/essential-packages
       tags: ubuntu
     - role: ubuntu/network-packages

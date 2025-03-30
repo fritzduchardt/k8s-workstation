@@ -13,4 +13,39 @@
       ]
     }
   ],
+  packageRules: [
+    // default
+    {
+      matchUpdateTypes: ["minor", "patch"],
+      automerge: true,
+    },
+    // more interesting
+    {
+      matchPackageNames: ["/ollama/"],
+      matchUpdateTypes: ["patch"],
+      automerge: true,
+    },
+    {
+      matchPackageNames: ["/vendir/"],
+      matchUpdateTypes: ["patch"],
+      automerge: true,
+    },
+    {
+      matchPackageNames: ["/myks/"],
+      matchUpdateTypes: ["patch"],
+      automerge: true,
+    },
+    {
+      matchPackageNames: ["/fzf/"],
+      matchUpdateTypes: ["patch"],
+      automerge: true,
+    },
+    // less interesting
+    {
+      matchPackageNames: ["/dive/"],
+      matchFileNames: ["prototypes/knative/**"],
+      matchUpdateTypes: ["major", "minor", "patch"],
+      automerge: true,
+    },
+  ]
 }

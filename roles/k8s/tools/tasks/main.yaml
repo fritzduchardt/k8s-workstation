@@ -1,5 +1,3 @@
-- name: Argocd
-  ansible.builtin.include_tasks: argocd.yaml
 - name: Helm
   ansible.builtin.include_tasks: helm.yaml
 - name: K9s
