@@ -8,4 +8,4 @@ plugins=( {{ zsh_plugins }} )
 
 source $ZSH/oh-my-zsh.sh
 # shellcheck disable=SC2016
-export RPROMPT='%F{blue} $(cluster-info)%f'
+#export RPROMPT='%F{blue} $(cluster-info)%f'
