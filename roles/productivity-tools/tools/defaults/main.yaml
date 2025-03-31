@@ -1,7 +1,8 @@
 versions:
-#  tag: v1.122.0
   # renovate: datasource=github-releases depName="sharkdp/bat"
   bat: v0.25.0
+  # renovate: datasource=github-releases depName="sigstore/cosign"
+  cosign: v2.4.3
   # renovate: datasource=github-releases depName="wagoodman/dive"
   dive: 0.13.1
   # renovate: datasource=github-releases depName="sharkdp/fd"
@@ -29,6 +30,7 @@ versions:
 
 download_urls:
   bat: https://github.com/sharkdp/bat/releases/download/{{ versions.bat }}/bat-{{ versions.bat }}-i686-unknown-linux-musl.tar.gz
+  cosign: https://github.com/sigstore/cosign/releases/download/{{ versions.cosign }}/cosign-linux-amd64
   dive: https://github.com/wagoodman/dive/releases/download/v{{ versions.dive }}/dive_{{ versions.dive }}_linux_amd64.tar.gz
   fd: https://github.com/sharkdp/fd/releases/download/{{ versions.fd }}/fd-{{ versions.fd }}-x86_64-unknown-linux-musl.tar.gz
   fzf: https://github.com/junegunn/fzf/releases/download/{{ versions.fzf }}/fzf-{{ versions.fzf | regex_replace('^v', '') }}-linux_amd64.tar.gz

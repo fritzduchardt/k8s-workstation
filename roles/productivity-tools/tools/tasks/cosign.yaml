@@ -1,0 +1,17 @@
+---
+- name: Check cosign present
+  ansible.builtin.stat:
+    path: /usr/local/bin/cosign-{{ versions.cosign }}
+  register: cosign_bin
+
+- name: Install cosign
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -OL {{ download_urls.cosign }}
+      install -m 555 cosign-linux-amd64 /usr/local/bin/cosign-{{ versions.cosign }}
+      ln -sf /usr/local/bin/cosign-{{ versions.cosign }} /usr/local/bin/cosign
+  when: not cosign_bin.stat.exists
