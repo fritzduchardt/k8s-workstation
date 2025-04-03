@@ -18,6 +18,8 @@
   ansible.builtin.include_tasks: mcfly.yaml
 - name: Ripgrep
   ansible.builtin.include_tasks: rg.yaml
+- name: Restic
+  ansible.builtin.include_tasks: restic.yaml
 - name: Task
   ansible.builtin.include_tasks: task.yaml
 - name: Yq

@@ -1,0 +1,27 @@
+---
+- name: Check restic present
+  ansible.builtin.stat:
+    path: /usr/local/bin/restic-{{ versions.restic }}
+  register: restic_bin
+
+- name: Install restic binary
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      ARCH=$(uname -m)
+      if [[ "$ARCH" == "aarch64" ]]; then
+        ARCH_SUFFIX="arm"
+      elif [[ "$ARCH" == "x86_64" ]]; then
+        ARCH_SUFFIX="amd64"
+      else
+        echo "Unsupported architecture: $ARCH"
+        exit 1
+      fi
+      curl -OL {{ download_urls.restic }}
+      bunzip2 restic_{{ versions.restic }}_linux_${ARCH_SUFFIX}.bz2
+      install -m 555 restic_{{ versions.restic }}_linux_${ARCH_SUFFIX} /usr/local/bin/restic-{{ versions.restic }}
+      ln -sf /usr/local/bin/restic-{{ versions.restic }} /usr/local/bin/restic
+      rm restic_{{ versions.restic }}_linux_${ARCH_SUFFIX}
+  when: not restic_bin.stat.exists

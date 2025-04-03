@@ -6,6 +6,7 @@ download_urls:
   lazydocker: https://github.com/jesseduffield/lazydocker/releases/download/v{{ versions.lazydocker }}/lazydocker_{{ versions.lazydocker }}_Linux_arm64.tar.gz
   lazygit: https://github.com/jesseduffield/lazygit/releases/download/v{{ versions.lazygit }}/lazygit_{{ versions.lazygit }}_Linux_arm64.tar.gz
   mcfly: https://github.com/cantino/mcfly/releases/download/{{ versions.mcfly }}/mcfly-{{ versions.mcfly }}-arm-unknown-linux-gnueabi.tar.gz
+  restic: https://github.com/restic/restic/releases/download/v{{ versions.restic }}/restic_{{ versions.restic }}_linux_arm.bz2
   rg: https://github.com/BurntSushi/ripgrep/releases/download/{{ versions.rg }}/ripgrep-{{ versions.rg }}-armv7-unknown-linux-musleabihf.tar.gz
   task: https://github.com/go-task/task/releases/download/{{ versions.task }}/task_linux_arm64.tar.gz
   yq: https://github.com/mikefarah/yq/releases/download/{{ versions.yq }}/yq_linux_arm64.tar.gz
