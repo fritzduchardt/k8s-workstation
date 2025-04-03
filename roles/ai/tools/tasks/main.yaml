@@ -1,0 +1,6 @@
+---
+- name: Install ollama
+  ansible.builtin.import_tasks: ollama.yaml
+
+- name: Install fabric
+  ansible.builtin.import_tasks: fabric.yaml
