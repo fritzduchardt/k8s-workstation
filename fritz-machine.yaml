@@ -4,6 +4,8 @@
   roles:
     - role: k8s/tools
       tags: k8s
+    - role: ai/tools
+      tags: ai
 #    - role: k8s/k8s-admin-shell
 #      tags: git
 #    - role: k8s/k8s-scripts
