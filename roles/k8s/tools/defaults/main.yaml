@@ -1,6 +1,6 @@
 helm:
   # renovate: datasource=github-releases depName="helm/helm"
-  version: v3.17.2
+  version: v3.17.3
 k9s:
   # renovate: datasource=github-releases depName="derailed/k9s"
   version: v0.40.10
