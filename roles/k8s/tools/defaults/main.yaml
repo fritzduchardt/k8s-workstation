@@ -27,7 +27,7 @@ myks:
   version: 4.6.1
 sops:
   # renovate: datasource=github-releases depName="getsops/sops"
-  version: v3.9.4
+  version: v3.10.2
 stern:
   # renovate: datasource=github-releases depName="stern/stern"
   version: 1.32.0
