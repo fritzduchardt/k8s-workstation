@@ -1,0 +1,16 @@
+---
+- name: Check gomplate present
+  ansible.builtin.stat:
+    path: /usr/local/bin/gomplate-{{ versions.gomplate }}
+  register: gomplate_bin
+
+- name: Install gomplate
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -LO "{{ download_urls.gomplate }}"
+      install -m 555  gomplate_{{ versions.gomplate }}_linux-amd64 /usr/local/bin/gomplate-{{ versions.gomplate }}
+      ln -sf /usr/local/bin/gomplate-{{ versions.gomplate }} /usr/local/bin/gomplate
+  when: not gomplate_bin.stat.exists

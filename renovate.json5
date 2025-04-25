@@ -21,6 +21,11 @@
     },
     // more interesting
     {
+      matchPackageNames: ["/helm/"],
+      matchUpdateTypes: ["patch"],
+      automerge: true,
+    },
+    {
       matchPackageNames: ["/ollama/"],
       matchUpdateTypes: ["patch"],
       automerge: true,
@@ -38,13 +43,6 @@
     {
       matchPackageNames: ["/fzf/"],
       matchUpdateTypes: ["patch"],
-      automerge: true,
-    },
-    // less interesting
-    {
-      matchPackageNames: ["/dive/"],
-      matchFileNames: ["prototypes/knative/**"],
-      matchUpdateTypes: ["major", "minor", "patch"],
       automerge: true,
     },
   ]

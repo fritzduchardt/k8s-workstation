@@ -8,6 +8,8 @@
   ansible.builtin.include_tasks: fd.yaml
 - name: Fzf
   ansible.builtin.include_tasks: fzf.yaml
+- name: Gomplate
+  ansible.builtin.include_tasks: gomplate.yaml
 - name: Hadolint
   ansible.builtin.include_tasks: hadolint.yaml
 - name: Lazydocker
