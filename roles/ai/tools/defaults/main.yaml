@@ -1,6 +1,6 @@
 ollama:
   # renovate: datasource=github-releases depName="ollama/ollama"
-  version: v0.6.3
+  version: v0.6.6
 
 fabric:
   # renovate: datasource=github-releases depName="danielmiessler/fabric"
