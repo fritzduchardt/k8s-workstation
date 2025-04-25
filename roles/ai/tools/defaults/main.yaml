@@ -4,4 +4,4 @@ ollama:
 
 fabric:
   # renovate: datasource=github-releases depName="danielmiessler/fabric"
-  version: v1.4.168
+  version: v1.4.184
