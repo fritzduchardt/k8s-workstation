@@ -11,10 +11,8 @@
     executable: /usr/bin/bash
     cmd: |
       set -eo pipefail
-      curl -fsSL https://github.com/copacetic-dev/copacetic/releases/download/{{ copacetic.version }}/copacetic_{{ copacetic.version }}_linux_amd64.tar.gz | \
-      tar -xzf - copacetic
-      install -m 555 copacetic /usr/local/bin/copacetic-{{ copacetic.version }}
+      curl -fsSL https://github.com/project-copacetic/copacetic/releases/download/v{{ copacetic.version }}/copa_{{ copacetic.version }}_linux_amd64.tar.gz | \
+      tar -xzf - copa
+      install -m 555 copa /usr/local/bin/copacetic-{{ copacetic.version }}
       ln -sf /usr/local/bin/copacetic-{{ copacetic.version }} /usr/local/bin/copacetic
-      rm copacetic
   when: not copacetic_bin.stat.exists
-
