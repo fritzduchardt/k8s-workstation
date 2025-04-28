@@ -1,0 +1,20 @@
+---
+- name: Check copacetic present
+  ansible.builtin.stat:
+    path: /usr/local/bin/copacetic-{{ copacetic.version }}
+  register: copacetic_bin
+
+- name: Install copacetic
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -fsSL https://github.com/copacetic-dev/copacetic/releases/download/{{ copacetic.version }}/copacetic_{{ copacetic.version }}_linux_amd64.tar.gz | \
+      tar -xzf - copacetic
+      install -m 555 copacetic /usr/local/bin/copacetic-{{ copacetic.version }}
+      ln -sf /usr/local/bin/copacetic-{{ copacetic.version }} /usr/local/bin/copacetic
+      rm copacetic
+  when: not copacetic_bin.stat.exists
+

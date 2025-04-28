@@ -1,6 +1,3 @@
-copacetic:
-  # renovate: datasource=github-releases depName="copacetic-dev/copacetic"
-  version: v0.10.0
 helm:
   # renovate: datasource=github-releases depName="helm/helm"
   version: v3.17.3

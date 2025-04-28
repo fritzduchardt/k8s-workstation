@@ -26,5 +26,3 @@
   ansible.builtin.include_tasks: vendir.yaml
 - name: Ytt
   ansible.builtin.include_tasks: ytt.yaml
-- name: Copacetic
-  ansible.builtin.include_tasks: copacetic.yaml
