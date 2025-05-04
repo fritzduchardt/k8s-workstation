@@ -8,7 +8,7 @@ versions:
   # renovate: datasource=github-releases depName="sharkdp/fd"
   fd: v10.2.0
   # renovate: datasource=github-releases depName="junegunn/fzf"
-  fzf: v0.61.3
+  fzf: v0.62.0
   # renovate: datasource=github-releases depName="hairyhenderson/gomplate"
   gomplate: 4.3.1
   # renovate: datasource=github-releases depName="hadolint/hadolint"
