@@ -33,7 +33,7 @@ stern:
   version: 1.32.0
 trivy:
   # renovate: datasource=github-releases depName="aquasecurity/trivy"
-  version: 0.61.1
+  version: 0.62.1
 vendir:
   # renovate: datasource=github-releases depName="carvel-dev/vendir"
   version: v0.43.2
