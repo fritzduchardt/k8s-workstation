@@ -28,7 +28,7 @@ versions:
   # renovate: datasource=github-releases depName="mikefarah/yq"
   yq: v4.45.1
   # renovate: datasource=github-releases depName="ajeetdsouza/zoxide"
-  zoxide: 0.9.7
+  zoxide: 0.9.8
   # renovate: datasource=github-releases depName="cjbassi/ytop"
   ytop: 0.6.2
 
