@@ -24,7 +24,7 @@ versions:
   # renovate: datasource=github-releases depName="BurntSushi/ripgrep"
   rg: 14.1.1
   # renovate: datasource=github-releases depName="go-task/task"
-  task: v3.42.1
+  task: v3.43.3
   # renovate: datasource=github-releases depName="mikefarah/yq"
   yq: v4.45.4
   # renovate: datasource=github-releases depName="ajeetdsouza/zoxide"
