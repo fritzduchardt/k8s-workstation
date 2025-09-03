@@ -1,0 +1,19 @@
+---
+- name: Check crane present
+  ansible.builtin.stat:
+    path: /usr/local/bin/crane-{{ crane.version }}
+  register: crane_bin
+
+- name: Install crane
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -sSL https://github.com/google/go-containerregistry/releases/download/{{ crane.version }}/go-containerregistry_Linux_x86_64.tar.gz | \
+      tar -xzf - crane
+      install -m 555 crane /usr/local/bin/crane-{{ crane.version }}
+      ln -sf /usr/local/bin/crane-{{ crane.version }} /usr/local/bin/crane
+      rm crane
+  when: not crane_bin.stat.exists
