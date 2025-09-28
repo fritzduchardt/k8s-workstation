@@ -1,3 +1,7 @@
 lego:
   # renovate: datasource=github-releases depName="go-acme/lego"
   version: 4.26.0
+
+certbot:
+  # package name to install for certbot (distribution package manager will be used)
+  package_name: certbot

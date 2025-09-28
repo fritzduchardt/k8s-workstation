@@ -1,3 +1,6 @@
 ---
 - name: Install Lego
   ansible.builtin.include_tasks: lego.yaml
+
+- name: Install Certbot
+  ansible.builtin.include_tasks: certbot.yaml
