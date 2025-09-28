@@ -1,0 +1,24 @@
+---
+- name: Check if lego binary exists
+  ansible.builtin.stat:
+    path: "/usr/local/bin/lego"
+  register: lego_stat
+
+- name: Query lego version if present
+  ansible.builtin.command:
+    cmd: "/usr/local/bin/lego --version"
+  register: lego_version_cmd
+  ignore_errors: true
+  changed_when: false
+
+- name: Install lego ACME client from GitHub releases
+  become: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      curl -fsSL https://github.com/go-acme/lego/releases/download/v{{ lego.version }}/lego_v{{ lego.version }}_linux_386.tar.gz | \
+      tar -xzf - lego
+      install -m 555 lego /usr/local/bin/lego-{{ lego.version }}
+      ln -sf /usr/local/bin/lego-{{ lego.version }} /usr/local/bin/lego
+      rm lego
+  when: not (lego_version_cmd.stdout is defined and (lego.version in lego_version_cmd.stdout))

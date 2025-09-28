@@ -1,0 +1,3 @@
+lego:
+  # renovate: datasource=github-releases depName="go-acme/lego"
+  version: 4.26.0

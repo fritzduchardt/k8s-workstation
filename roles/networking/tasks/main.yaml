@@ -1,0 +1,3 @@
+---
+- name: Install Lego
+  ansible.builtin.include_tasks: lego.yaml

@@ -6,12 +6,14 @@
       tags: k8s
     - role: ai/tools
       tags: ai
-#    - role: k8s/k8s-admin-shell
-#      tags: git
-#    - role: k8s/k8s-scripts
-#      tags: git
-#    - role: productivity-tools/linux-tools
-#      tags: git
+    - role: k8s/k8s-admin-shell
+      tags: git
+    - role: k8s/k8s-scripts
+      tags: git
+    - role: networking
+      tags: networking
+    - role: productivity-tools/linux-tools
+      tags: git
     - role: productivity-tools/tools
       tags: productivity
     - role: productivity-tools/oh-my-zsh
