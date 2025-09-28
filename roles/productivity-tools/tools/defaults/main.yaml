@@ -16,7 +16,7 @@ versions:
   # renovate: datasource=github-releases depName="jesseduffield/lazydocker"
   lazydocker: 0.24.1
   # renovate: datasource=github-releases depName="jesseduffield/lazygit"
-  lazygit: 0.51.1
+  lazygit: 0.55.1
   # renovate: datasource=github-releases depName="cantino/mcfly"
   mcfly: v0.9.3
   # renovate: datasource=github-releases depName="restic/restic"
