@@ -42,7 +42,7 @@ vendir:
   version: v0.44.0
 ytt:
   # renovate: datasource=github-releases depName="carvel-dev/ytt"
-  version: v0.52.0
+  version: v0.52.1
 crane:
   # renovate: datasource=github-releases depName="google/go-containerregistry"
   version: v0.20.6
