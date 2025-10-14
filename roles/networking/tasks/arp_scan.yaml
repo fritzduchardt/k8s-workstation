@@ -1,0 +1,20 @@
+---
+- name: Check if arp-scan binary exists
+  ansible.builtin.stat:
+    path: "/usr/sbin/arp-scan"
+  register: arp_scan_stat
+
+- name: Query arp-scan version if present
+  ansible.builtin.command:
+    cmd: "/usr/sbin/arp-scan --version"
+  register: arp_scan_version_cmd
+  ignore_errors: true
+  changed_when: false
+
+- name: Install arp-scan package
+  become: true
+  ansible.builtin.package:
+    name: "{{ arp_scan.package_name | default('arp-scan') }}"
+    state: present
+  when:
+    - not (arp_scan_version_cmd.stdout is defined and ('arp-scan' in arp_scan_version_cmd.stdout))

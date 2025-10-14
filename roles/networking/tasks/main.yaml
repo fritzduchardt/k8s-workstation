@@ -4,3 +4,6 @@
 
 - name: Install Certbot
   ansible.builtin.include_tasks: certbot.yaml
+
+- name: Install arp-scan
+  ansible.builtin.include_tasks: arp_scan.yaml

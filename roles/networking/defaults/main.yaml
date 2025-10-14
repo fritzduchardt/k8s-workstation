@@ -5,3 +5,6 @@ lego:
 certbot:
   # package name to install for certbot (distribution package manager will be used)
   package_name: certbot
+
+arp_scan:
+  package_name: arp-scan
