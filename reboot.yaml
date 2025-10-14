@@ -1,7 +1,0 @@
-- name: Reboot all hosts
-  hosts: "*"
-  gather_facts: no
-  tasks:
-  - name: Reboot
-    become: true
-    ansible.builtin.reboot:

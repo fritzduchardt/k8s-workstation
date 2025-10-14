@@ -1,9 +1,12 @@
 ---
+- name: Install networking packages
+  become: true
+  ansible.builtin.package:
+    name:
+      - "{{ certbot.package_name | default('certbot') }}"
+      - "{{ arp_scan.package_name | default('arp-scan') }}"
+    state: present
+
 - name: Install Lego
   ansible.builtin.include_tasks: lego.yaml
 
-- name: Install Certbot
-  ansible.builtin.include_tasks: certbot.yaml
-
-- name: Install arp-scan
-  ansible.builtin.include_tasks: arp_scan.yaml

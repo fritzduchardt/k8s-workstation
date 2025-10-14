@@ -1,6 +1,0 @@
-- name: Install essential packages
-  hosts: "*"
-  become: true
-  roles:
-    - role: productivity-tools/oh-my-zsh
-      tags: productivity

@@ -1,5 +1,5 @@
 - name: Set up the K8s workstations
-  hosts: "*"
+  hosts: "localhost"
   become: true
   roles:
     - role: k8s/tools
