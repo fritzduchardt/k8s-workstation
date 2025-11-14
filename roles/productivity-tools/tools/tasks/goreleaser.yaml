@@ -1,0 +1,19 @@
+---
+- name: Check goreleaser present
+  ansible.builtin.stat:
+    path: /usr/local/bin/goreleaser-{{ versions.goreleaser }}
+  register: goreleaser_bin
+
+- name: Install goreleaser
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -L {{ download_urls.goreleaser }} | \
+      tar -xzf - goreleaser
+      install -m 555 goreleaser /usr/local/bin/goreleaser-{{ versions.goreleaser }}
+      ln -sf /usr/local/bin/goreleaser-{{ versions.goreleaser }} /usr/local/bin/goreleaser
+      rm goreleaser
+  when: not goreleaser_bin.stat.exists

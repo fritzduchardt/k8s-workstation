@@ -10,6 +10,8 @@
   ansible.builtin.include_tasks: fzf.yaml
 - name: Gomplate
   ansible.builtin.include_tasks: gomplate.yaml
+- name: Goreleaser
+  ansible.builtin.include_tasks: goreleaser.yaml
 - name: Hadolint
   ansible.builtin.include_tasks: hadolint.yaml
 - name: Lazydocker
