@@ -24,7 +24,7 @@ kubeswitch:
   version: 0.9.3
 kubecolor:
   # renovate: datasource=github-releases depName="kubecolor/kubecolor"
-  version: 0.5.1
+  version: 0.5.3
 myks:
   # renovate: datasource=github-releases depName="mykso/myks"
   version: 4.11.4
