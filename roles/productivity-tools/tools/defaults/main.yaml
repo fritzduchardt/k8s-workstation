@@ -16,7 +16,7 @@ versions:
   # renovate: datasource=github-releases depName="hadolint/hadolint"
   hadolint: v2.12.0
   # renovate: datasource=github-releases depName="jesseduffield/lazydocker"
-  lazydocker: 0.24.1
+  lazydocker: 0.24.2
   # renovate: datasource=github-releases depName="jesseduffield/lazygit"
   lazygit: 0.55.1
   # renovate: datasource=github-releases depName="cantino/mcfly"
