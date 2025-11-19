@@ -10,6 +10,7 @@
   ansible.builtin.shell:
     executable: /usr/bin/bash
     cmd: |
+      set -eo pipefail
       curl -LO https://github.com/carvel-dev/vendir/releases/download/{{ vendir.version }}/vendir-linux-amd64
       install -m 555 vendir-linux-amd64 /usr/local/bin/vendir-{{ vendir.version }}
       ln -f -s /usr/local/bin/vendir-{{ vendir.version }} /usr/local/bin/vendir

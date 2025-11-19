@@ -10,9 +10,10 @@
   ansible.builtin.shell:
     executable: /usr/bin/bash
     cmd: |
-      curl -sSL -O https://github.com/danielmiessler/fabric/releases/download/{{ fabric.version }}/fabric-linux-amd64
-      chmod +x fabric-linux-amd64
-      mv fabric-linux-amd64 /usr/local/bin/fabric-{{ fabric.version }}
+      set -eu pipefail
+      curl -sSL -O https://github.com/danielmiessler/fabric/releases/download/{{ fabric.version }}/fabric_Linux_i386.tar.gz
+      tar -xzf fabric_Linux_i386.tar.gz fabric
+      install -m 555 fabric /usr/local/bin/fabric-{{ fabric.version }}
       ln -sf /usr/local/bin/fabric-{{ fabric.version }} /usr/local/bin/fabric
+      rm fabric_Linux_i386.tar.gz
   when: not fabric_bin.stat.exists
-

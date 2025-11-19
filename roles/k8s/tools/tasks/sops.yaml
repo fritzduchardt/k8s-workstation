@@ -10,9 +10,9 @@
   ansible.builtin.shell:
     executable: /usr/bin/bash
     cmd: |
+      set -eo pipefail
       curl -LO https://github.com/getsops/sops/releases/download/{{ sops.version }}/sops-{{ sops.version }}.linux.amd64
       install -m 555 sops-{{ sops.version }}.linux.amd64 /usr/local/bin/sops-{{ sops.version }}
       ln -sf /usr/local/bin/sops-{{ sops.version }} /usr/local/bin/sops
       rm sops-{{ sops.version }}.linux.amd64
   when: not sops_bin.stat.exists
-
