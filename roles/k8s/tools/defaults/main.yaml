@@ -18,7 +18,7 @@ kubeconform:
   version: v0.6.7
 kubectl:
   # renovate: datasource=github-releases depName="kubernetes/kubernetes"
-  version: v1.33.0
+  version: v1.34.3
 kubeswitch:
   # renovate: datasource=github-releases depName="danielfoehrKn/kubeswitch"
   version: 0.9.3
