@@ -30,3 +30,12 @@ tasks:
           INVENTORY: inventory/localhost.yaml
           PLAYBOOK: localhost.yaml
           TAG: productivity
+
+  ansible:run:ai:
+    desc: Run ai roles
+    cmds:
+      - task: ansible:run
+        vars:
+          INVENTORY: inventory/localhost.yaml
+          PLAYBOOK: localhost.yaml
+          TAG: ai
