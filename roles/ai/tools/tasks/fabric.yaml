@@ -15,5 +15,6 @@
       tar -xzf fabric_Linux_i386.tar.gz fabric
       install -m 555 fabric /usr/local/bin/fabric-{{ fabric.version }}
       ln -sf /usr/local/bin/fabric-{{ fabric.version }} /usr/local/bin/fabric
-      rm fabric_Linux_i386.tar.gz
+      rm -f fabric_Linux_i386.tar.gz
+      rm -f fabric
   when: not fabric_bin.stat.exists
