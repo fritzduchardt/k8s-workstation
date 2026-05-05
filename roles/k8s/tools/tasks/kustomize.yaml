@@ -1,0 +1,19 @@
+---
+- name: Check kustomize present
+  ansible.builtin.stat:
+    path: /usr/local/bin/kustomize-{{ kustomize.version }}
+  register: kustomize_bin
+
+- name: Install kustomize
+  become: true
+  changed_when: true
+  ansible.builtin.shell:
+    executable: /usr/bin/bash
+    cmd: |
+      set -eo pipefail
+      curl -sSL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F{{ kustomize.version }}/kustomize_{{ kustomize.version }}_linux_amd64.tar.gz | \
+      tar -xzf - kustomize
+      install -m 555 kustomize /usr/local/bin/kustomize-{{ kustomize.version }}
+      ln -sf /usr/local/bin/kustomize-{{ kustomize.version }} /usr/local/bin/kustomize
+      rm kustomize
+  when: not kustomize_bin.stat.exists

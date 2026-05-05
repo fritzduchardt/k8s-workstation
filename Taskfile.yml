@@ -31,6 +31,15 @@ tasks:
           PLAYBOOK: localhost.yaml
           TAG: productivity
 
+  ansible:run:k8s:
+    desc: Run k8s roles
+    cmds:
+      - task: ansible:run
+        vars:
+          INVENTORY: inventory/localhost.yaml
+          PLAYBOOK: localhost.yaml
+          TAG: k8s
+
   ansible:run:ai:
     desc: Run ai roles
     cmds:

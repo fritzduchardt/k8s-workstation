@@ -14,6 +14,8 @@
   ansible.builtin.include_tasks: kubecolor.yaml
 - name: Kubeswitch
   ansible.builtin.include_tasks: kubeswitch.yaml
+- name: Kustomize
+  ansible.builtin.include_tasks: kustomize.yaml
 - name: Myks
   ansible.builtin.include_tasks: myks.yaml
 - name: Sops
@@ -30,4 +32,3 @@
   ansible.builtin.include_tasks: crane.yaml
 - name: Copacetic
   ansible.builtin.include_tasks: copacetic.yaml
-
