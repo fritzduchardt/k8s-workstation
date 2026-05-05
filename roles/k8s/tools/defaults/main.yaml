@@ -24,7 +24,7 @@ kubeswitch:
   version: 0.9.3
 kubecolor:
   # renovate: datasource=github-releases depName="kubecolor/kubecolor"
-  version: 0.5.1
+  version: 0.6.0
 kustomize:
   # renovate: datasource=github-releases depName="kubernetes-sigs/kustomize"
   version: v5.6.0
