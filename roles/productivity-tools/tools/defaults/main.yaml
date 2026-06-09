@@ -10,7 +10,7 @@ versions:
   # renovate: datasource=github-releases depName="junegunn/fzf"
   fzf: v0.62.0
   # renovate: datasource=github-releases depName="hairyhenderson/gomplate"
-  gomplate: 4.3.2
+  gomplate: 4.3.3
   # renovate: datasource=github-releases depName="goreleaser/goreleaser"
   goreleaser: v2.12.7
   # renovate: datasource=github-releases depName="hadolint/hadolint"
